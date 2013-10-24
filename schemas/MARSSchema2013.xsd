@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://mars-o-matic.com" 
@@ -52,6 +51,14 @@
       <xs:enumeration value="G" />
       <xs:enumeration value="T" />
       <xs:enumeration value="P" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CriticalityType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="low" />
+      <xs:enumeration value="medium" />
+      <xs:enumeration value="high" />
     </xs:restriction>
   </xs:simpleType>
 

@@ -1,0 +1,1623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://mars-o-matic.com" 
+           xmlns:aae="http://mars-o-matic.com"
+           elementFormDefault="qualified">
+    
+  <xs:include schemaLocation="http://mars-o-matic.com/2013/MARSSchema.xsd"/>
+  
+  <xs:simpleType name="number-or-empty">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="esx-commands">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="cpu" />
+      <xs:enumeration value="mem" />
+      <xs:enumeration value="net" />
+      <xs:enumeration value="io" />
+      <xs:enumeration value="runtime" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ssl-enabled">
+    <xs:annotation>
+      <xs:documentation>This option is for https requests.
+        Possible values:
+        "true" or "false". default: "false"
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean" />
+  </xs:simpleType>
+
+  <xs:complexType name="CheckBaseType">
+    <xs:attribute name="info" type="xs:string" use="optional" />
+    <xs:attribute name="MonitorNodeID" type="aae:aaeID" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="CheckWithEmail">
+    <xs:attribute name="info" type="xs:string" use="optional" />
+    <xs:attribute name="notify_email_address" type="xs:string" use="optional" />
+    <xs:attribute name="notify_email_address_cc" type="xs:string" use="optional" />
+    <xs:attribute name="notify_email_subject" type="xs:string" use="optional" />
+    <xs:attribute name="notify_email_body" type="xs:string" use="optional" />
+  </xs:complexType>
+  
+  <xs:element name="WatchMeConfig">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element name="NoDefaultCheck" type="xs:string"/>
+        <xs:element name="apache_connects">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="aae:ShortString" />
+                <xs:attribute name="script_name" type="aae:ShortString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="failure_interval" type="aae:number-or-empty" />
+                <xs:attribute name="failure_max" type="aae:number-or-empty" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="apache_modstat_busy_slots">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="aae:LongString" />
+                <xs:attribute name="host" type="xs:string" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="event_critical" type="xs:int" use="optional" />
+                <xs:attribute name="event_clear" type="xs:int" use="optional" />
+                <xs:attribute name="event_warn" type="xs:int" use="optional" />																		
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>				
+        <xs:element name="authenticated_ldap_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="ldap_host" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="ldap_bind_dn" type="xs:string" use="optional" />
+                <xs:attribute name="ldap_bind_pw" type="xs:string" use="optional" />
+                <xs:attribute name="ldapbase" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="cert_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="auftritt" type="aae:LongString" />
+                <xs:attribute name="cert" type="aae:LongString" />
+                <xs:attribute name="openssl" type="xs:string" use="optional" />
+                <xs:attribute name="upcondition" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="checkproc_automatic">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="process" type="aae:LongString" />
+                <xs:attribute name="limits" type="aae:ShortString" />
+                <xs:attribute name="start" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="cluster_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="cluster_log" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="disk_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="max_capacity_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_capacity_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="mountpoint" type="xs:string" use="optional" />
+                <xs:attribute name="rule_sleeptime" type="xs:long" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="disk_check_win">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="max_capacity_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_capacity_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="mountpoint" type="xs:string" use="optional" />
+                <xs:attribute name="rule_sleeptime" type="xs:long" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="docme_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="instance" type="aae:ShortString" />
+                <xs:attribute name="port" type="xs:int" />
+                <xs:attribute name="start" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dvo_monitor">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="gc_log" type="xs:string" use="optional" />
+                <xs:attribute name="script" type="xs:string" use="optional" />
+                <xs:attribute name="script_timeout" type="xs:string" use="optional" />
+                <xs:attribute name="check_interval" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="eai_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="eai_url" type="aae:LongString" />
+                <xs:attribute name="xml_file" type="aae:ShortString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="esx_check">
+          <xs:annotation>
+            <xs:documentation>This check is used for monitoring the ESX
+              VCenter.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="datacenter" type="xs:string" />
+                <xs:attribute name="username" type="xs:string" />
+                <xs:attribute name="password" type="xs:string" />
+                <xs:attribute name="command" type="aae:esx-commands" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="esx_check_vm">
+          <xs:annotation>
+            <xs:documentation>This check is used for monitoring several
+              ESX-VMs.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="datacenter" type="xs:string" />
+                <xs:attribute name="virtualmachine" type="xs:string" />
+                <xs:attribute name="username" type="xs:string" />
+                <xs:attribute name="password" type="xs:string" />
+                <xs:attribute name="command" type="aae:esx-commands" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="esx_check_host">
+          <xs:annotation>
+            <xs:documentation>This check is used for monitoring several
+              ESX-hosts.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="datacenter" type="xs:string" />
+                <xs:attribute name="hostname" type="xs:string" />
+                <xs:attribute name="username" type="xs:string" />
+                <xs:attribute name="password" type="xs:string" />
+                <xs:attribute name="command" type="aae:esx-commands" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="file_age_in_dirs">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" use="optional" />
+                <xs:attribute name="directory" type="aae:LongString" use="optional" />
+                <xs:attribute name="timeunit" type="aae:ShortString" use="optional" />
+                <xs:attribute name="wlimit" type="xs:int" use="optional" />
+                <xs:attribute name="climit" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="file_age_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="filename" type="xs:string" use="optional" />
+                <xs:attribute name="maxage" type="xs:string" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />
+                <xs:attribute name="message" type="xs:string" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="file_timedage_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="filename" type="xs:string" use="optional" />
+                <xs:attribute name="daymask" type="xs:int" use="optional" />
+                <xs:attribute name="fromtime" type="xs:int" use="optional" />
+                <xs:attribute name="totime" type="xs:int" use="optional" />
+                <xs:attribute name="message" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="fortigate_snmp">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="aae:LongString" />
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="failure_interval" type="aae:number-or-empty" />
+                <xs:attribute name="failure_max" type="aae:number-or-empty" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ftp_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="ftp_host" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="user" type="xs:string" use="optional" />
+                <xs:attribute name="pass" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="gatherd_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="service_name" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="generic_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="checkcmd" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="prio" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="generic_logalarm">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="logpath" type="aae:LongString" />
+                <xs:attribute name="pattern" type="aae:LongString" />
+                <xs:attribute name="tickettext" type="aae:LongString" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="generic_root_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="checkcmd" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="prio" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="geoip_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="w32service_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="displayname" type="aae:ShortString" />
+                <xs:attribute name="svcname" type="aae:ShortString" />
+                <xs:attribute name="runcycle" type="xs:long" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="htdig_age_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="instance" type="aae:LongString" />
+                <xs:attribute name="db_path" type="xs:string" use="optional" />
+                <xs:attribute name="maxage" type="xs:int" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />
+                <xs:attribute name="max" type="xs:int" use="optional" />
+                <xs:attribute name="wordlist" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_selenium">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="SeleniumScript" type="xs:string" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="event_critical" type="xs:int" use="optional" />
+                <xs:attribute name="event_warn" type="xs:string" use="optional" />
+                <xs:attribute name="event_clear" type="xs:int" use="optional" />						
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_dummy">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="ticketto" type="xs:string" use="optional" />
+                <xs:attribute name="ticketprio" type="xs:int" use="optional" />
+                <xs:attribute name="tresholdresponsetime" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="retries" type="xs:int" use="optional" />
+                <xs:attribute name="event_critical" type="xs:int" use="optional" />
+                <xs:attribute name="event_clear" type="xs:int" use="optional" />
+                <xs:attribute name="config" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_dummy_paged">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="ticketto" type="xs:string" use="optional" />
+                <xs:attribute name="tickettext" type="xs:string" use="optional" />
+                <xs:attribute name="tresholdresponsetime" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="retries" type="xs:int" use="optional" />
+                <xs:attribute name="config" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_dummy_only">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="config" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_content">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />									
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="status" type="xs:string" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_content2">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_content3">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="tickettext" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_content4">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+                <xs:attribute name="alarmcount" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_content_nocallme">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="mailaddress" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_mvktool">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="mailaddress" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="description" type="xs:string" use="optional" />
+                <xs:attribute name="minsize" type="xs:string" use="optional" />
+                <xs:attribute name="maxsize" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="onredirect" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_named">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_named2">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_proxy">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="description" type="xs:string" use="optional" />
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="hostip" type="xs:string" use="optional" />
+                <xs:attribute name="proxyuser" type="xs:string" use="optional" />
+                <xs:attribute name="proxypass" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="http_header" type="xs:string" use="optional" />
+                <xs:attribute name="tickettext" type="xs:string" use="optional" />
+                <xs:attribute name="alarmcount" type="xs:int" use="optional" />
+                <xs:attribute name="mailaddress" type="xs:string" use="optional" />
+                <xs:attribute name="event_critical" type="xs:int" use="optional" />
+                <xs:attribute name="event_warn" type="xs:int" use="optional" />
+                <xs:attribute name="event_clear" type="xs:int" use="optional" />			
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_responsetime_with_steps">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="checkcmd" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+                <xs:attribute name="prio" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_simple">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" />
+                <xs:attribute name="url" type="xs:string" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_static">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_static2">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_static_follow_content">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="onredirect" type="aae:ShortString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_static_size_mail">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="mailaddress" type="aae:ShortString" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="minsize" type="aae:ShortString" />
+                <xs:attribute name="maxsize" type="aae:ShortString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="onredirect" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_status_and_responsetime">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckWithEmail">
+                <xs:attribute name="description" type="xs:string" use="optional" />								
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="url" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="status" type="xs:int" use="optional" />
+                <xs:attribute name="content" type="xs:string" use="optional" />
+                <xs:attribute name="ssl" type="aae:ssl-enabled" use="optional" />
+                <xs:attribute name="ip" type="xs:string" use="optional" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+                <xs:attribute name="criticaltime" type="xs:int" use="optional" />
+                <xs:attribute name="http_header" type="xs:string" use="optional" />
+                <xs:attribute name="minsize" type="aae:ShortString" use="optional" />
+                <xs:attribute name="maxsize" type="aae:ShortString" use="optional" />
+                <xs:attribute name="onredirect" type="xs:string" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="startscript" type="xs:string" use="optional" />
+                <xs:attribute name="tickettext" type="xs:string" use="optional" />
+                <xs:attribute name="alarmcount" type="xs:int" use="optional" />
+                <xs:attribute name="mailaddress" type="xs:string" use="optional" />
+                <xs:attribute name="event_critical" type="xs:int" use="optional" />
+                <xs:attribute name="event_warn" type="xs:int" use="optional" />
+                <xs:attribute name="event_clear" type="xs:int" use="optional" />									
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_global_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+                <xs:attribute name="scriptname" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="http_local_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="service_name" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ilias_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="aae:LongString" use="optional" />
+                <xs:attribute name="mailaddress" type="aae:LongString" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="jmx_simple">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="jmxurl" type="aae:LongString" />
+                <xs:attribute name="object" type="aae:LongString" />
+                <xs:attribute name="attribute" type="aae:LongString" />
+                <xs:attribute name="compound_key" type="aae:LongString" use="optional" />
+                <xs:attribute name="wlimit" type="xs:long" use="optional" />
+                <xs:attribute name="climit" type="xs:long" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="username" type="xs:string" use="optional" />
+                <xs:attribute name="password" type="xs:string" use="optional" />
+                <xs:attribute name="name" type="aae:LongString" />
+                <xs:attribute name="unit" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="jrun_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="fail_interval" type="xs:int" use="optional" />
+                <xs:attribute name="fail_max" type="xs:int" use="optional" />
+                <xs:attribute name="jrun_path" type="xs:string" use="optional" />
+                <xs:attribute name="start_jrun" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="kos_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="parameter" type="aae:LongString" />
+                <xs:attribute name="script" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="kos_eai_request">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="parameter" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="kos_eai_transaktion">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="parameter" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ldap_responsetime">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="ldapbase" type="aae:LongString" />
+                <xs:attribute name="ldap_host" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ldap_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ldap_restart">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkhost" type="xs:string" use="optional" />
+                <xs:attribute name="checkport" type="xs:int" use="optional" />
+                <xs:attribute name="start" type="xs:string" use="optional" />
+                <xs:attribute name="startmsg" type="xs:string" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="tickettext" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="linux_opened_files">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="aae:ShortString" />
+                <xs:attribute name="script_name" type="aae:ShortString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="linux_process_cpu_memory_usage">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="aae:LongString" />
+                <xs:attribute name="process" type="xs:string" />
+                <xs:attribute name="target" type="xs:string" use="optional" />
+                <xs:attribute name="warning" type="xs:int" use="optional" />
+                <xs:attribute name="critical" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="linux_process_cpu_mem">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="aae:LongString" />
+                <xs:attribute name="process" type="xs:string" />
+                <xs:attribute name="delay" type="xs:int" use="optional" />
+                <xs:attribute name="cpuwarning" type="xs:int" use="optional" />
+                <xs:attribute name="cpucritical" type="xs:int" use="optional" />
+                <xs:attribute name="memwarning" type="xs:int" use="optional" />
+                <xs:attribute name="memcritical" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="windows_process_cpu_usage">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="aae:LongString" />
+                <xs:attribute name="process" type="xs:string" />
+                <xs:attribute name="target" type="xs:string" use="optional" />
+                <xs:attribute name="cpuwarning" type="xs:int" use="optional" />
+                <xs:attribute name="cpucritical" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>					
+        <xs:element name="load_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="max_load5_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_load15_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_load5_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="max_load15_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="max_user_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_user_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="max_swap_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_swap_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="ticketprio" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="logtransfer">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="logdir" type="xs:string" use="optional" />
+                <xs:attribute name="filemask" type="xs:string" use="optional" />
+                <xs:attribute name="min_age" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="logtransfer_server">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="logdir" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Machine-Network-Packet-Drop-Linux">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="interface" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mailq_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="warn" type="xs:int" use="optional" />
+                <xs:attribute name="alarm" type="xs:int" use="optional" />
+                <xs:attribute name="maxage" type="xs:int" use="optional" />
+                <xs:attribute name="queuedirs" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mails_in_mailqueue">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="warn" type="xs:int" use="optional" />
+                <xs:attribute name="alarm" type="xs:int" use="optional" />
+                <xs:attribute name="queuedirs" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mail_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="aae:LongString" use="optional" />
+                <xs:attribute name="mailaddress" type="aae:LongString" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mail_probe">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mssql_query_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="sqlserver" type="aae:ShortString" />
+                <xs:attribute name="user" type="aae:ShortString" />
+                <xs:attribute name="pw" type="aae:ShortString" />
+                <xs:attribute name="db" type="aae:LongString" />
+                <xs:attribute name="query" type="xs:string" use="optional" />
+                <xs:attribute name="resultregex" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mssql_db_responsetime">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="sqlserver" type="aae:ShortString" />
+                <xs:attribute name="user" type="aae:ShortString" />
+                <xs:attribute name="pw" type="aae:ShortString" />
+                <xs:attribute name="db" type="aae:LongString" />
+                <xs:attribute name="query" type="xs:string" use="optional" />
+                <xs:attribute name="resultregex" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mssql_planview">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="sqlserver" type="aae:ShortString" />
+                <xs:attribute name="user" type="aae:ShortString" />
+                <xs:attribute name="pw" type="aae:ShortString" />
+                <xs:attribute name="db" type="aae:LongString" />
+                <xs:attribute name="query" type="xs:string" use="optional" />
+                <xs:attribute name="resultregex" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="errortext" type="xs:string" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mssql_query_file_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="sqlserver" type="aae:ShortString" />
+                <xs:attribute name="user" type="aae:ShortString" />
+                <xs:attribute name="pw" type="aae:ShortString" />
+                <xs:attribute name="db" type="aae:LongString" />
+                <xs:attribute name="input" type="aae:LongString" />
+                <xs:attribute name="resultregex" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="treshold" type="xs:long" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mysql_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="host" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="db" type="aae:ShortString" />
+                <xs:attribute name="user" type="aae:ShortString" />
+                <xs:attribute name="pw" type="xs:string" />
+                <xs:attribute name="start" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ntp_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="ntpq" type="xs:string" use="optional" />
+                <xs:attribute name="startoffset" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="oracle_alert_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="oracle_sid" type="aae:LongString" />
+                <xs:attribute name="oracle_base" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="oracle_stats">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="oracle_base" type="xs:string" use="optional" />
+                <xs:attribute name="oracle_home" type="xs:string" use="optional" />
+                <xs:attribute name="instance" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pattern_update_maillog">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="pdfservice_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkhost" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="perftable_sqlcheck">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="startoffset" type="xs:int" use="optional" />
+                <xs:attribute name="alarmprio" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="planview_log_search">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+                <xs:attribute name="searchstring0" type="xs:string" use="optional" />
+                <xs:attribute name="searchstring1" type="xs:string" use="optional" />
+                <xs:attribute name="searchstring2" type="xs:string" use="optional" />
+                <xs:attribute name="ticketmsg" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ping_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkhost" type="xs:string" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="port_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkhost" type="xs:string" use="optional" />
+                <xs:attribute name="checkport" type="xs:int" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="start" type="xs:string" use="optional" />
+                <xs:attribute name="startmsg" type="xs:string" use="optional" />
+                <xs:attribute name="name" type="xs:string" use="optional" />
+                <xs:attribute name="tickettext" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="prngd_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="socket" type="xs:string" use="optional" />
+                <xs:attribute name="prngd_ctl" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckWithEmail">
+                <xs:attribute name="procname" type="aae:ShortString" />
+                <xs:attribute name="proccount" type="xs:string" use="optional" />
+                <xs:attribute name="execcmd" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="proc_resource_utilization_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="processname" type="aae:ShortString" />
+                <xs:attribute name="max_cpu_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_cpu_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="max_mem_warn" type="xs:int" use="optional" />
+                <xs:attribute name="max_mem_alarm" type="xs:int" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="publishd_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="service_name" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="reddot_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="url" type="aae:LongString" />
+                <xs:attribute name="expect" type="xs:string" use="optional" />
+                <xs:attribute name="max_age" type="xs:int" use="optional" />
+                <xs:attribute name="wget" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="releaseme_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="timeout" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rpc_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="wanted" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="netstat" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_perfmon_simple">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="counter_name" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_rootscript">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="xs:string" />
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="failure_interval" type="aae:number-or-empty" />
+                <xs:attribute name="failure_max" type="aae:number-or-empty" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_script_ilserver">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="xs:string" />
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" />
+                <xs:attribute name="mailaddress" type="aae:LongString" />
+                <xs:attribute name="start" type="xs:string" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_script_nocallme">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="xs:string" />
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="failure_interval" type="aae:number-or-empty" />
+                <xs:attribute name="failure_max" type="aae:number-or-empty" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_script_time">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="xs:string" />
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="failure_interval" type="aae:number-or-empty" />
+                <xs:attribute name="failure_max" type="aae:number-or-empty" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_script_tradb">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="xs:string" />
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_streamexec_simple">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_name" type="aae:LongString" />
+                <xs:attribute name="script_command" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sapbc_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sapbc_server_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sap_size_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="filename" type="xs:string" use="optional" />
+                <xs:attribute name="maxsize" type="xs:int" />
+                <xs:attribute name="fromtime" type="xs:int" use="optional" />
+                <xs:attribute name="totime" type="xs:int" use="optional" />
+                <xs:attribute name="interval" type="xs:int" use="optional" />
+                <xs:attribute name="message" type="xs:string" use="optional" />
+                <xs:attribute name="subject" type="xs:string" use="optional" />
+                <xs:attribute name="adress" type="xs:string" use="optional" />
+                <xs:attribute name="subject2" type="xs:string" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sendmail_stats_hourly">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="inboundrelayregex" type="aae:LongString" />
+                <xs:attribute name="outboundclientregex" type="aae:LongString" />
+                <xs:attribute name="maillog" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sendmail_stats_daily">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="inboundrelayregex" type="aae:LongString" />
+                <xs:attribute name="outboundclientregex" type="aae:LongString" />
+                <xs:attribute name="maillog" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="servers_mailwatch">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="statefile">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="path" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="smtp_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="mailhost" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="start" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ssh_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="version" type="xs:string" use="optional" />
+                <xs:attribute name="port" type="xs:int" use="optional" />
+                <xs:attribute name="start" type="xs:string" use="optional" />
+                <xs:attribute name="ssh_host" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="stringfind">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="path" type="xs:string" />
+                <xs:attribute name="file" type="xs:string" />
+                <xs:attribute name="search_string" type="xs:string" />
+                <xs:attribute name="compare_string" type="xs:string" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="syslog_log">
+          <xs:annotation>
+            <xs:documentation>if the parameter 'syslog' is not set, the
+              default option is '/var/log/all'
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="syslog" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="eventlog_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="eventlog" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="password_check">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:length value="0" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="run_script">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="script_command" type="xs:string" />
+                <xs:attribute name="script_name" type="aae:ShortString" />
+                <xs:attribute name="runcycle" type="aae:number-or-empty" />
+                <xs:attribute name="startoffset" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="timeout" type="aae:number-or-empty" use="optional" />
+                <xs:attribute name="failure_interval" type="aae:number-or-empty" />
+                <xs:attribute name="failure_max" type="aae:number-or-empty" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="to_oracle_error_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="log_hostname" type="xs:string" use="optional" />
+                <xs:attribute name="service_name" type="xs:string" use="optional" />
+                <xs:attribute name="logpath" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tomcat_log">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="tomcatlog" type="xs:string" use="optional" />
+                <xs:attribute name="mailaddress" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="tomcat_log_zlag">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="tomcatlog" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="upcheck">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="checkname" type="aae:LongString" />
+                <xs:attribute name="checkcmd" type="aae:LongString" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="w32clustergroup_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="groupname" type="aae:LongString" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="w32clusternodes_check">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="groupnamea" type="aae:LongString" use="optional" />
+                <xs:attribute name="groupnameb" type="aae:LongString" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="w32load_check">
+          <xs:annotation>
+            <xs:documentation>provide information about the average CPU load
+              over the last 1/5/15 minutes
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="webtree_stats">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="instance" type="aae:LongString" />
+                <xs:attribute name="dirs" type="xs:string" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="wget_content">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="aae:CheckBaseType">
+                <xs:attribute name="url" type="xs:string" />
+                <xs:attribute name="content" type="aae:LongString" />
+                <xs:attribute name="credentials" type="xs:string" use="optional" />
+                <xs:attribute name="runcycle" type="xs:int" use="optional" />
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

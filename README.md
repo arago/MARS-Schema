@@ -14,7 +14,7 @@ MARS is a wordplay with the initial letters of the four basis object types conta
 
 # How can I contribute?
 
-Please help us to grow the Open Graph of IT by contributing to this project. See our [MARS Contribution Document](https://github.com/arago/MARS-Schema/blob/master/CONTRIBUTING.md) for more details on submitting suggestions and starting discussions about MARS.
+See our [MARS Contribution Document](https://github.com/arago/MARS-Schema/blob/master/CONTRIBUTING.md) for more details on submitting suggestions and starting discussions about MARS.
 
 If you have general questions or need support please contact us at <mars@arago.de>
 

@@ -18,6 +18,12 @@ See our [MARS Contribution Document](https://github.com/arago/MARS-Schema/blob/m
 
 If you have general questions or need support please contact us at <mars@arago.de>
 
+# Get XML schema
+
+Current version: see [ChangeLog](CHANGELOG.md)
+
+Download latest version of XML schema file from [here](blob/master/schemas/MARSSchema2013.xsd)
+
 # License
 
 Please see [LICENSE.md](https://github.com/arago/MARS-Schema/blob/master/) for information about the licensing.

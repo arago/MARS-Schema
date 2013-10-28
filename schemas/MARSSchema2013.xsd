@@ -363,6 +363,7 @@
       <xs:enumeration value="ColdFusion" />
       <xs:enumeration value="Confluence" />
       <xs:enumeration value="Courion" />
+      <xs:enumeration value="DB2" />
       <xs:enumeration value="DBS" />
       <xs:enumeration value="DSPAM" />
       <xs:enumeration value="DIDiver" />
@@ -1614,7 +1615,7 @@
 
   <xs:complexType name="CommonNodeType">
     <xs:sequence>
-      <xs:element name="Dependencies" type="aae:DependenciesType" />
+      <xs:element name="Dependencies" type="aae:DependenciesType" minOccurs="0" />
       <xs:element name="CustomerInformation" type="aae:CustomerInformationType" />
       <xs:element name="Extensions" type="aae:ExtensionsType" minOccurs="0" />      
     </xs:sequence>
@@ -4424,6 +4425,16 @@
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Oracle" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DB2">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="DB2" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

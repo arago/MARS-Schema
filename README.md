@@ -14,7 +14,7 @@ MARS is a wordplay with the initial letters of the four basis object types conta
 
 # How can I contribute?
 
-See our [MARS Contribution Document](https://github.com/arago/MARS-Schema/blob/master/CONTRIBUTING.md) for more details on submitting suggestions and starting discussions about MARS.
+See our [MARS Contribution Document](CONTRIBUTING.md) for more details on submitting suggestions and starting discussions about MARS.
 
 If you have general questions or need support please contact us at <mars@arago.de>
 
@@ -22,8 +22,8 @@ If you have general questions or need support please contact us at <mars@arago.d
 
 Current version: see [ChangeLog](CHANGELOG.md)
 
-Download latest version of XML schema file from [here](blob/master/schemas/MARSSchema2013.xsd)
+Download latest version of XML schema file from [here](schemas/MARSSchema2013.xsd)
 
 # License
 
-Please see [LICENSE.md](https://github.com/arago/MARS-Schema/blob/master/) for information about the licensing.
+Please see [LICENSE.md](LICENSE.md) for information about the licensing.

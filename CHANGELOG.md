@@ -7,8 +7,8 @@ Changelog of MARS Schema
 
 - *included fixes*
 
-  + [Emtpy <Dependencies> tag can be omitted](pull/1)
-  + [New software sub class "DB2" for software class "DBMS"](pull/1)
+  + [Emtpy <Dependencies> tag can be omitted](../../pull/1)
+  + [New software sub class "DB2" for software class "DBMS"](../../pull/1)
 
 
 ## Version 4.1.0

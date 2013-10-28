@@ -2,7 +2,8 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
-           elementFormDefault="qualified">
+           elementFormDefault="qualified"
+	   version="4.1.1" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 

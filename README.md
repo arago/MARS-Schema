@@ -18,7 +18,7 @@ See our [MARS Contribution Document](CONTRIBUTING.md) for more details on submit
 
 If you have general questions or need support please contact us at <mars@arago.de>
 
-# Get XML schema
+# Download
 
 Current version: see [ChangeLog](CHANGELOG.md)
 

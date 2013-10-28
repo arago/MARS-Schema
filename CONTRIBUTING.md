@@ -5,7 +5,7 @@
 Please use the [GitHub Issue Feature](https://github.com/arago/MARS-Schema/issues) for logging a new request or submitting a suggestion. We will take care of the issue as soon as possible.
 
 Feel free to use the [Github Fork/Pull mechanism](https://help.github.com/articles/fork-a-repo) if 
-you want to contribute by changing the XML schema directly (pls. use only [MARSSchema2013.next.xsd](blob/master/schemas/MARSSchema2013.next.xsd) for that purpose). We will review and discuss the requested extension and come back to you.
+you want to contribute by changing the XML schema directly (pls. use only [MARSSchema2013.next.xsd](schemas/MARSSchema2013.next.xsd) for that purpose). We will review and discuss the requested extension and come back to you.
 
 If you have any kind of question please contact us at <mars@arago.de> .
 

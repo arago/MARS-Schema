@@ -54,14 +54,6 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="CriticalityType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="low" />
-      <xs:enumeration value="medium" />
-      <xs:enumeration value="high" />
-    </xs:restriction>
-  </xs:simpleType>
-
   <!-- Attribute Types -->
   <xs:simpleType name="IPv4_address">
     <xs:annotation>

@@ -21,3 +21,5 @@ If you have general questions or need support please contact us at <mars@arago.d
 # License
 
 Please see [LICENSE.md](https://github.com/arago/MARS-Schema/blob/master/) for information about the licensing.
+
+#

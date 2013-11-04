@@ -26,10 +26,9 @@ Download latest version of XML schema file from [here](schemas/MARSSchema2013.xs
 
 # License
 
-<<<<<<< HEAD
 Please see [LICENSE.md](https://github.com/arago/MARS-Schema/blob/master/) for information about the licensing.
 
 #
 =======
 Please see [LICENSE.md](LICENSE.md) for information about the licensing.
->>>>>>> 2dc4785808670ad26125156b0a3fd1576c8260a2
+

@@ -1,6 +1,13 @@
 Changelog of MARS Schema
 ====
 
+# latest Version: 4.1.1
+
+## next Version 4.1.2
+
+- *included fixes*
+  + [New SW-Class MailServer plus sub-classes](../../issues/2)
+
 ## Version 4.1.1
 
 - *Date:* Mon Oct 28 16:07:10 2013 +0100

@@ -7,6 +7,7 @@ Changelog of MARS Schema
 
 - *included fixes*
   + [New SW-Class MailServer plus sub-classes](../../issues/2)
+  + [New sub-class 'OpenAM' for SW-Class 'IAM'](../../issues/5)
 
 ## Version 4.1.1
 

@@ -471,6 +471,7 @@
       <xs:enumeration value="nginx" />
       <xs:enumeration value="NovellIM" />
       <xs:enumeration value="OfficeSuite" />
+      <xs:enumeration value="OpenAM" />
       <xs:enumeration value="Openfire" />
       <xs:enumeration value="OpenNMS" />
       <xs:enumeration value="OpenSSH" />
@@ -3919,6 +3920,16 @@
         <xs:extension base="aae:QueueAndCacheAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="WebsphereMQ" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OpenAM">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="OpenAM" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

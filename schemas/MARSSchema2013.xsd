@@ -3,7 +3,7 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="4.1.1" >
+	   version="4.1.2" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -288,6 +288,7 @@
       <xs:enumeration value="IndividualApplication" />
       <xs:enumeration value="ITSM" />
       <xs:enumeration value="MIS" />
+      <xs:enumeration value="MailServer" />
       <xs:enumeration value="Networking" />
       <xs:enumeration value="Productivity" />
       <xs:enumeration value="Proxy" />
@@ -355,9 +356,11 @@
       <xs:enumeration value="CloudwareCity" />
       <xs:enumeration value="ColdFusion" />
       <xs:enumeration value="Confluence" />
+      <xs:enumeration value="CourierMailServer" />
       <xs:enumeration value="Courion" />
       <xs:enumeration value="DB2" />
       <xs:enumeration value="DBS" />
+      <xs:enumeration value="Dovecot" />
       <xs:enumeration value="DSPAM" />
       <xs:enumeration value="DIDiver" />
       <xs:enumeration value="DocMe" />
@@ -468,6 +471,7 @@
       <xs:enumeration value="nginx" />
       <xs:enumeration value="NovellIM" />
       <xs:enumeration value="OfficeSuite" />
+      <xs:enumeration value="OpenAM" />
       <xs:enumeration value="Openfire" />
       <xs:enumeration value="OpenNMS" />
       <xs:enumeration value="OpenSSH" />
@@ -487,6 +491,7 @@
       <xs:enumeration value="Planalyzer" />
       <xs:enumeration value="PlanPlusOnline" />
       <xs:enumeration value="PlanviewEnterprise" />
+      <xs:enumeration value="Postfix" />
       <xs:enumeration value="PostgreSQL" />
       <xs:enumeration value="PowerVM" />
       <xs:enumeration value="ProntoXI" />
@@ -495,6 +500,7 @@
       <xs:enumeration value="profense" />
       <xs:enumeration value="QAD" />
       <xs:enumeration value="QlikView" />
+      <xs:enumeration value="Qmail" />
       <xs:enumeration value="QuantaPlus" />
       <xs:enumeration value="RSAAM" />
       <xs:enumeration value="RedDotCMS" />
@@ -514,6 +520,7 @@
       <xs:enumeration value="SageAct" />
       <xs:enumeration value="SalesforceCom" />
       <xs:enumeration value="Samba" />
+      <xs:enumeration value="Sendmail" />
       <xs:enumeration value="ServerIron" />
       <xs:enumeration value="StingrayTrafficManager" />
       <xs:enumeration value="ServiceDeskExpress" />
@@ -522,6 +529,7 @@
       <xs:enumeration value="SiebelCRM" />
       <xs:enumeration value="SilverStripeCMS" />
       <xs:enumeration value="SimpleDB" />
+      <xs:enumeration value="Smail" />
       <xs:enumeration value="SugarCRM" />
       <xs:enumeration value="SummusITMS" />
       <xs:enumeration value="SFTP" />
@@ -2544,6 +2552,20 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:complexType name="MailServerAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="MailServer">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Within Internet message handling services (MHS), a message transfer agent or mail transfer agent (MTA) or mail relay is software that transfers electronic mail messages from one computer. An MTA implements both the client (sending) and server (receiving) portions of the Simple Mail Transfer Protocol.
+            </xs:documentation>
+         </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="MISAttributes">
     <xs:complexContent>
       <xs:extension base="aae:SoftwareAttributes">
@@ -3392,6 +3414,16 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CourierMailServer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MailServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="CourierMailServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="DBS">
     <xs:complexType>
       <xs:complexContent>
@@ -3408,6 +3440,16 @@
         <xs:extension base="aae:CMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="dotCMS" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Dovecot">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MailServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Dovecot" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -3882,6 +3924,16 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="OpenAM">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="OpenAM" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Openfire">
     <xs:complexType>
       <xs:complexContent>
@@ -4158,6 +4210,36 @@
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="MSSQL" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Postfix">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MailServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Postfix" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Qmail">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MailServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Qmail" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Sendmail">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MailServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Sendmail" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

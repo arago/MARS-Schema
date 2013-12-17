@@ -242,6 +242,10 @@
       <xs:enumeration value="PowerPC" />
       <xs:enumeration value="Itanium" />
       <xs:enumeration value="Appliance" />
+      <xs:enumeration value="MIPS" />
+      <xs:enumeration value="Alpha" />
+      <xs:enumeration value="SH-x" />
+      <xs:enumeration value="StrongARM" />
     </xs:restriction>
   </xs:simpleType>
 

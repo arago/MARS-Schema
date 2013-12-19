@@ -5,6 +5,11 @@ Changelog of MARS Schema
 
 ## next Version 4.1.3
 
+- *included fixes*
+  + [some new values for MachineArchitecture](../../issues/8)
+  + [allow _ in CustomerInformation/@ID](../../pull/10)
+
+
 ## Version 4.1.2
 
 - *included fixes*

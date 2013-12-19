@@ -39,9 +39,9 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="dnsId">
+  <xs:simpleType name="customerId">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[a-z0-9\-\.]+" />
+      <xs:pattern value="[a-z0-9\-\._]+" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -1596,7 +1596,7 @@
         <xs:documentation>information about the customer</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyType">
-        <xs:attribute name="ID" type="aae:dnsId" use="required" />
+        <xs:attribute name="ID" type="aae:customerId" use="required" />
         <xs:attribute name="Name" type="aae:ShortString" />
       </xs:restriction>
     </xs:complexContent>

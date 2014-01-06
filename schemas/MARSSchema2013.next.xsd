@@ -300,6 +300,7 @@
       <xs:enumeration value="Proxy" />
       <xs:enumeration value="QueueAndCache" />
       <xs:enumeration value="Reference" />
+      <xs:enumeration value="RTE" />
       <xs:enumeration value="SearchEngines" />
       <xs:enumeration value="SupplyChainManagement" />
       <xs:enumeration value="SystemService" />
@@ -430,12 +431,14 @@
       <xs:enumeration value="Ironport" />
       <xs:enumeration value="JBoss" />
       <xs:enumeration value="JDA" />
+      <xs:enumeration value="JDK" />
       <xs:enumeration value="JedoxBiSuite" />
       <xs:enumeration value="JOnAS" />
       <xs:enumeration value="JIRA" />
       <xs:enumeration value="Jive" />
       <xs:enumeration value="Joomla" />
       <xs:enumeration value="jRun" />
+      <xs:enumeration value="JRE" />
       <xs:enumeration value="KPIMonitor" />
       <xs:enumeration value="KVM" />
       <xs:enumeration value="lighttpd" />
@@ -497,6 +500,7 @@
       <xs:enumeration value="OracleVM" />
       <xs:enumeration value="Orion" />
       <xs:enumeration value="Oxwall" />
+      <xs:enumeration value="Perl" />
       <xs:enumeration value="Planalyzer" />
       <xs:enumeration value="PlanPlusOnline" />
       <xs:enumeration value="PlanviewEnterprise" />
@@ -507,6 +511,7 @@
       <xs:enumeration value="Proxmox" />
       <xs:enumeration value="Proteus" />
       <xs:enumeration value="profense" />
+      <xs:enumeration value="Python" />
       <xs:enumeration value="QAD" />
       <xs:enumeration value="QlikView" />
       <xs:enumeration value="Qmail" />
@@ -2730,6 +2735,20 @@ The BSD MachineClass is used to cover the following descendants of the original 
               Zugriff auf das angefragte Wissen verschaffen.
             </xs:documentation>
           </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RTEAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" 
+		      type="aae:SoftwareClass" fixed="RTE">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">any run time environment: java RTE, perl, python, ...
+            </xs:documentation>
+         </xs:annotation>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
@@ -5742,6 +5761,48 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DNSServerAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="bind" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SoftwareClass=RTE -->
+  <xs:element name="JDK">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="JDK" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JRE">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="JRE" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Perl">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Perl" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Python">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Python" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

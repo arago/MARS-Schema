@@ -497,9 +497,15 @@
       <xs:enumeration value="OracleEBS" />
       <xs:enumeration value="OracleESB" />
       <xs:enumeration value="OracleERP" />
+      <xs:enumeration value="OracleDiscoverer" />
+      <xs:enumeration value="OracleForms" />
+      <xs:enumeration value="OracleFusionHTTPServer" />
       <xs:enumeration value="OracleIDM" />
+      <xs:enumeration value="OracleOPMN" />
+      <xs:enumeration value="OracleReports" />
       <xs:enumeration value="OracleSCM" />
       <xs:enumeration value="OracleVM" />
+      <xs:enumeration value="OracleWebCache" />
       <xs:enumeration value="Orion" />
       <xs:enumeration value="Oxwall" />
       <xs:enumeration value="Perl" />
@@ -4676,6 +4682,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="OracleIDM">
+    <xs:annotation>
+      <xs:documentation>also known as Oracle Internet Directory</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:IAMAttributes">
@@ -5835,6 +5844,69 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+
+  <!-- Oracle Fusion stuff -->
+  <xs:element name="OracleFusionHTTPServer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:WebServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleFusionHTTPServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleDiscoverer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:BusinessIntelligenceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleDiscoverer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleWebCache">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProxyAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleWebCache" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleReports">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:BusinessIntelligenceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleReports" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleOPMN">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ITSMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleOPMN" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleForms">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DevelopmentToolsAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleForms" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
 
   <!-- Resource node elements -->
   <xs:element name="Backend">

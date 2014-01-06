@@ -438,6 +438,7 @@
       <xs:enumeration value="KVM" />
       <xs:enumeration value="lighttpd" />
       <xs:enumeration value="LibreOffice" />
+      <xs:enumeration value="Liferay" />
       <xs:enumeration value="LoadMaster" />
       <xs:enumeration value="LotusSymphony" />
       <xs:enumeration value="Lucene" />
@@ -5679,6 +5680,17 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:CommunityAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="vBulletin" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Liferay">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ApplicationServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Liferay" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

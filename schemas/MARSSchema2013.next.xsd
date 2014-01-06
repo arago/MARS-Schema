@@ -279,6 +279,7 @@
       <xs:enumeration value="Community" />
       <xs:enumeration value="CRM" />
       <xs:enumeration value="DBMS" />
+      <xs:enumeration value="DNSServer" />
       <xs:enumeration value="DataProcessing" />
       <xs:enumeration value="DevelopmentTools" />
       <xs:enumeration value="EAI" />
@@ -336,6 +337,7 @@
       <xs:enumeration value="BarracudaLB" />
       <xs:enumeration value="BarracudaSF" />
       <xs:enumeration value="BI" />
+      <xs:enumeration value="bind" />
       <xs:enumeration value="BigBrother" />
       <xs:enumeration value="BIGIP" />
       <xs:enumeration value="Biztalk" />
@@ -2354,6 +2356,20 @@ The BSD MachineClass is used to cover the following descendants of the original 
             </xs:documentation>
             <xs:documentation xml:lang="de">Werkzeuge der
               Softwareentwicklung
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DNSServerAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="DNSServer">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">domain name service software and its configuration 
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -5719,6 +5735,17 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
 
+  <!-- SoftwareClass=DNSServer -->
+  <xs:element name="bind">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DNSServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="bind" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
 
   <!-- Resource node elements -->
   <xs:element name="Backend">

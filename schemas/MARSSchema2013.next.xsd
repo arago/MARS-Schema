@@ -273,6 +273,7 @@
       <xs:enumeration value="Administration" />
       <xs:enumeration value="AntiSpam" />
       <xs:enumeration value="ApplicationServer" />
+      <xs:enumeration value="Automation" />
       <xs:enumeration value="BusinessIntelligence" />
       <xs:enumeration value="CMS" />
       <xs:enumeration value="Communication" />
@@ -332,6 +333,7 @@
       <xs:enumeration value="AppVelocity" />
       <xs:enumeration value="ASA" />
       <xs:enumeration value="AutomationAnywhere" />
+      <xs:enumeration value="AutoPilot" />
       <xs:enumeration value="Axios" />
       <xs:enumeration value="Basecamp" />
       <xs:enumeration value="BOARD" />
@@ -2191,6 +2193,20 @@ The BSD MachineClass is used to cover the following descendants of the original 
               von WebApplikationen
             </xs:documentation>
           </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AutomationAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="Automation">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Server for (IT) automation
+            </xs:documentation>
+           </xs:annotation>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
@@ -5803,6 +5819,18 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:RTEAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="Python" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SoftwareClass=Automation -->
+  <xs:element name="AutoPilot">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AutomationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="AutoPilot" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

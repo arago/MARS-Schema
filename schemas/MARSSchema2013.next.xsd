@@ -419,6 +419,7 @@
       <xs:enumeration value="GoogleMini" />
       <xs:enumeration value="GoogleSA" />
       <xs:enumeration value="GuardusMES" />
+      <xs:enumeration value="Hadoop" />
       <xs:enumeration value="HiQube" />
       <xs:enumeration value="Hypertable" />
       <xs:enumeration value="HyperV" />
@@ -3917,6 +3918,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DataProcessingAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="GuardusMES" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Hadoop">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DataProcessingAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Hadoop" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

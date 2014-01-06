@@ -261,6 +261,7 @@
       <xs:enumeration value="Solaris" />
       <xs:enumeration value="UNIX" />
       <xs:enumeration value="Windows" />
+      <xs:enumeration value="BSD" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -2039,6 +2040,23 @@
         <xs:extension base="aae:MachineAttributes">
           <xs:attribute use="required" name="MachineClass" type="aae:MachineClass"
                         fixed="Linux" />
+        </xs:extension>
+      </xs:complexContent>
+      
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BSD">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Berkeley Software Distribution (BSD, sometimes called Berkeley Unix) is a Unix operating system derivative developed and distributed by the Computer Systems Research Group (CSRG) of the University of California, Berkeley.
+The BSD MachineClass is used to cover the following descendants of the original BSD: FreeBSD, NetBSD, OpenBSD
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MachineAttributes">
+          <xs:attribute use="required" name="MachineClass" type="aae:MachineClass"
+                        fixed="BSD" />
         </xs:extension>
       </xs:complexContent>
       

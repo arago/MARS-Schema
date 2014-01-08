@@ -510,6 +510,7 @@
       <xs:enumeration value="Orion" />
       <xs:enumeration value="Oxwall" />
       <xs:enumeration value="Perl" />
+      <xs:enumeration value="PHP-FPM" />
       <xs:enumeration value="Planalyzer" />
       <xs:enumeration value="PlanPlusOnline" />
       <xs:enumeration value="PlanviewEnterprise" />
@@ -5829,6 +5830,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:RTEAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="Perl" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHP-FPM">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="PHP-FPM" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

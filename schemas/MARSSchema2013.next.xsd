@@ -616,6 +616,7 @@
       <xs:enumeration value="ZenossITSM" />
       <xs:enumeration value="ZohoCRM" />
       <xs:enumeration value="ZeroMQ" />
+      <xs:enumeration value="Zookeeper" />
       <xs:enumeration value="Zotero" />
       <xs:enumeration value="zVM" />
       <xs:enumeration value="RabbitMQ" />
@@ -4753,6 +4754,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="MySQL" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Zookeeper">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Zookeeper" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

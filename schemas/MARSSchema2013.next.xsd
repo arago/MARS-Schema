@@ -369,6 +369,7 @@
       <xs:enumeration value="Confluence" />
       <xs:enumeration value="CourierMailServer" />
       <xs:enumeration value="Courion" />
+      <xs:enumeration value="Crond" />
       <xs:enumeration value="DB2" />
       <xs:enumeration value="DBS" />
       <xs:enumeration value="Dovecot" />
@@ -5770,6 +5771,20 @@ The BSD MachineClass is used to cover the following descendants of the original 
 
 
   <!-- SoftwareClass=SystemService -->
+  <xs:element name="Crond">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Unix/Linux cron daemon
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:SystemServiceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Crond" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Telnetd">
     <xs:complexType>
       <xs:complexContent>

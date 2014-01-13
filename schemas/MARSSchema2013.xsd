@@ -3,7 +3,7 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="4.1.2" >
+	   version="4.1.3" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -39,9 +39,9 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="dnsId">
+  <xs:simpleType name="customerId">
     <xs:restriction base="xs:string">
-      <xs:pattern value="[a-z0-9\-\.]+" />
+      <xs:pattern value="[a-z0-9\-\._]+" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -242,6 +242,10 @@
       <xs:enumeration value="PowerPC" />
       <xs:enumeration value="Itanium" />
       <xs:enumeration value="Appliance" />
+      <xs:enumeration value="MIPS" />
+      <xs:enumeration value="Alpha" />
+      <xs:enumeration value="SH-x" />
+      <xs:enumeration value="StrongARM" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -257,6 +261,7 @@
       <xs:enumeration value="Solaris" />
       <xs:enumeration value="UNIX" />
       <xs:enumeration value="Windows" />
+      <xs:enumeration value="BSD" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -268,12 +273,14 @@
       <xs:enumeration value="Administration" />
       <xs:enumeration value="AntiSpam" />
       <xs:enumeration value="ApplicationServer" />
+      <xs:enumeration value="Automation" />
       <xs:enumeration value="BusinessIntelligence" />
       <xs:enumeration value="CMS" />
       <xs:enumeration value="Communication" />
       <xs:enumeration value="Community" />
       <xs:enumeration value="CRM" />
       <xs:enumeration value="DBMS" />
+      <xs:enumeration value="DNSServer" />
       <xs:enumeration value="DataProcessing" />
       <xs:enumeration value="DevelopmentTools" />
       <xs:enumeration value="EAI" />
@@ -294,8 +301,10 @@
       <xs:enumeration value="Proxy" />
       <xs:enumeration value="QueueAndCache" />
       <xs:enumeration value="Reference" />
+      <xs:enumeration value="RTE" />
       <xs:enumeration value="SearchEngines" />
       <xs:enumeration value="SupplyChainManagement" />
+      <xs:enumeration value="SystemService" />
       <xs:enumeration value="Virtualization" />
       <xs:enumeration value="WebServer" />
     </xs:restriction>
@@ -324,12 +333,14 @@
       <xs:enumeration value="AppVelocity" />
       <xs:enumeration value="ASA" />
       <xs:enumeration value="AutomationAnywhere" />
+      <xs:enumeration value="AutoPilot" />
       <xs:enumeration value="Axios" />
       <xs:enumeration value="Basecamp" />
       <xs:enumeration value="BOARD" />
       <xs:enumeration value="BarracudaLB" />
       <xs:enumeration value="BarracudaSF" />
       <xs:enumeration value="BI" />
+      <xs:enumeration value="bind" />
       <xs:enumeration value="BigBrother" />
       <xs:enumeration value="BIGIP" />
       <xs:enumeration value="Biztalk" />
@@ -358,6 +369,7 @@
       <xs:enumeration value="Confluence" />
       <xs:enumeration value="CourierMailServer" />
       <xs:enumeration value="Courion" />
+      <xs:enumeration value="Crond" />
       <xs:enumeration value="DB2" />
       <xs:enumeration value="DBS" />
       <xs:enumeration value="Dovecot" />
@@ -408,6 +420,7 @@
       <xs:enumeration value="GoogleMini" />
       <xs:enumeration value="GoogleSA" />
       <xs:enumeration value="GuardusMES" />
+      <xs:enumeration value="Hadoop" />
       <xs:enumeration value="HiQube" />
       <xs:enumeration value="Hypertable" />
       <xs:enumeration value="HyperV" />
@@ -422,16 +435,19 @@
       <xs:enumeration value="Ironport" />
       <xs:enumeration value="JBoss" />
       <xs:enumeration value="JDA" />
+      <xs:enumeration value="JDK" />
       <xs:enumeration value="JedoxBiSuite" />
       <xs:enumeration value="JOnAS" />
       <xs:enumeration value="JIRA" />
       <xs:enumeration value="Jive" />
       <xs:enumeration value="Joomla" />
       <xs:enumeration value="jRun" />
+      <xs:enumeration value="JRE" />
       <xs:enumeration value="KPIMonitor" />
       <xs:enumeration value="KVM" />
       <xs:enumeration value="lighttpd" />
       <xs:enumeration value="LibreOffice" />
+      <xs:enumeration value="Liferay" />
       <xs:enumeration value="LoadMaster" />
       <xs:enumeration value="LotusSymphony" />
       <xs:enumeration value="Lucene" />
@@ -483,11 +499,19 @@
       <xs:enumeration value="OracleEBS" />
       <xs:enumeration value="OracleESB" />
       <xs:enumeration value="OracleERP" />
+      <xs:enumeration value="OracleDiscoverer" />
+      <xs:enumeration value="OracleForms" />
+      <xs:enumeration value="OracleFusionHTTPServer" />
       <xs:enumeration value="OracleIDM" />
+      <xs:enumeration value="OracleOPMN" />
+      <xs:enumeration value="OracleReports" />
       <xs:enumeration value="OracleSCM" />
       <xs:enumeration value="OracleVM" />
+      <xs:enumeration value="OracleWebCache" />
       <xs:enumeration value="Orion" />
       <xs:enumeration value="Oxwall" />
+      <xs:enumeration value="Perl" />
+      <xs:enumeration value="PHP-FPM" />
       <xs:enumeration value="Planalyzer" />
       <xs:enumeration value="PlanPlusOnline" />
       <xs:enumeration value="PlanviewEnterprise" />
@@ -498,6 +522,7 @@
       <xs:enumeration value="Proxmox" />
       <xs:enumeration value="Proteus" />
       <xs:enumeration value="profense" />
+      <xs:enumeration value="Python" />
       <xs:enumeration value="QAD" />
       <xs:enumeration value="QlikView" />
       <xs:enumeration value="Qmail" />
@@ -544,6 +569,7 @@
       <xs:enumeration value="SpectrumEM" />
       <xs:enumeration value="Spiceworks" />
       <xs:enumeration value="Squid" />
+      <xs:enumeration value="SSHD" />
       <xs:enumeration value="Statistica" />
       <xs:enumeration value="Steelhead" />
       <xs:enumeration value="SterlingSecureProxy" />
@@ -553,6 +579,7 @@
       <xs:enumeration value="Sybase" />
       <xs:enumeration value="Syspro" />
       <xs:enumeration value="TECSYSWMS" />
+      <xs:enumeration value="Telnetd" />
       <xs:enumeration value="TMTFleetMaintenance" />
       <xs:enumeration value="ThreePlink" />
       <xs:enumeration value="ThreePLWM" />
@@ -589,6 +616,7 @@
       <xs:enumeration value="ZenossITSM" />
       <xs:enumeration value="ZohoCRM" />
       <xs:enumeration value="ZeroMQ" />
+      <xs:enumeration value="Zookeeper" />
       <xs:enumeration value="Zotero" />
       <xs:enumeration value="zVM" />
       <xs:enumeration value="RabbitMQ" />
@@ -1592,7 +1620,7 @@
         <xs:documentation>information about the customer</xs:documentation>
       </xs:annotation>
       <xs:restriction base="xs:anyType">
-        <xs:attribute name="ID" type="aae:dnsId" use="required" />
+        <xs:attribute name="ID" type="aae:customerId" use="required" />
         <xs:attribute name="Name" type="aae:ShortString" />
       </xs:restriction>
     </xs:complexContent>
@@ -2041,6 +2069,23 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="BSD">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Berkeley Software Distribution (BSD, sometimes called Berkeley Unix) is a Unix operating system derivative developed and distributed by the Computer Systems Research Group (CSRG) of the University of California, Berkeley.
+The BSD MachineClass is used to cover the following descendants of the original BSD: FreeBSD, NetBSD, OpenBSD
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MachineAttributes">
+          <xs:attribute use="required" name="MachineClass" type="aae:MachineClass"
+                        fixed="BSD" />
+        </xs:extension>
+      </xs:complexContent>
+      
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="Solaris">
     <xs:annotation>
       <xs:documentation xml:lang="de">Solaris ist der Name
@@ -2158,6 +2203,20 @@
               von WebApplikationen
             </xs:documentation>
           </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="AutomationAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="Automation">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Server for (IT) automation
+            </xs:documentation>
+           </xs:annotation>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
@@ -2328,6 +2387,20 @@
             </xs:documentation>
             <xs:documentation xml:lang="de">Werkzeuge der
               Softwareentwicklung
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DNSServerAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="DNSServer">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">domain name service software and its configuration 
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -2693,6 +2766,20 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:complexType name="RTEAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" 
+		      type="aae:SoftwareClass" fixed="RTE">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">any run time environment: java RTE, perl, python, ...
+            </xs:documentation>
+         </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="SearchEnginesAttributes">
     <xs:complexContent>
       <xs:extension base="aae:SoftwareAttributes">
@@ -2733,6 +2820,20 @@
             <xs:documentation xml:lang="de">Bezeichnet die
               Planung und das Management aller Aufgaben bei Lieferantenwahl,
               Beschaffung und Umwandlung sowie aller Aufgaben der Logistik.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SystemServiceAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="SystemService">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">describes all system services (ususally being part of operating system). For Linux/UNIX servers typical examples are: sshd, ftpd, and so on.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -3824,6 +3925,16 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Hadoop">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DataProcessingAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Hadoop" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="IntegrityVM">
     <xs:complexType>
       <xs:complexContent>
@@ -4585,6 +4696,9 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="OracleIDM">
+    <xs:annotation>
+      <xs:documentation>also known as Oracle Internet Directory</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:IAMAttributes">
@@ -4640,6 +4754,16 @@
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="MySQL" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Zookeeper">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Zookeeper" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -5644,6 +5768,193 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+
+  <xs:element name="Liferay">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ApplicationServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Liferay" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- SoftwareClass=SystemService -->
+  <xs:element name="Crond">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">Unix/Linux cron daemon
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:SystemServiceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Crond" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Telnetd">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:SystemServiceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Telnetd" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SSHD">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:SystemServiceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="SSHD" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SoftwareClass=DNSServer -->
+  <xs:element name="bind">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DNSServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="bind" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SoftwareClass=RTE -->
+  <xs:element name="JDK">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="JDK" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JRE">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="JRE" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Perl">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Perl" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PHP-FPM">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="PHP-FPM" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Python">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Python" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SoftwareClass=Automation -->
+  <xs:element name="AutoPilot">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AutomationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="AutoPilot" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Oracle Fusion stuff -->
+  <xs:element name="OracleFusionHTTPServer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:WebServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleFusionHTTPServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleDiscoverer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:BusinessIntelligenceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleDiscoverer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleWebCache">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProxyAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleWebCache" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleReports">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:BusinessIntelligenceAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleReports" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleOPMN">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ITSMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleOPMN" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleForms">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DevelopmentToolsAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="OracleForms" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
 
   <!-- Resource node elements -->
   <xs:element name="Backend">

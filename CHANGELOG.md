@@ -18,6 +18,8 @@ Changelog of MARS Schema
   + [New MachineClass BSD](../../issues/12)
   + [new SoftwareClass/SoftwareSubClass for AutoPilot CE](../../issues/13)
   + [new SoftwareSubClass PHP-FPM](../../pull/15)
+  + [new SoftwareSubClass Crond](../../pull/18)
+  + [new SoftwareSubClass Zookeeper](../../pull/19)
 
 
 ## Version 4.1.2

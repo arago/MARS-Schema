@@ -7,6 +7,8 @@ Changelog of MARS Schema
 
 ## Version 4.1.3
 
+- *Date:* Jan 13 2014
+
 - *included fixes*
   + [New sub-class 'OpenAM' for SW-Class 'IAM'](../../issues/5)
   + [some new values for MachineArchitecture](../../issues/8)
@@ -19,6 +21,8 @@ Changelog of MARS Schema
 
 
 ## Version 4.1.2
+
+- *Date:* Nov 12 2013
 
 - *included fixes*
   + [New SW-Class MailServer plus sub-classes](../../issues/2)

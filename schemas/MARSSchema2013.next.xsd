@@ -27,7 +27,7 @@
   <xs:simpleType name="NameString">
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-zA-Z0-9].*[a-zA-Z0-9\)]" />
-      <xs:maxLength value="50" />
+      <xs:maxLength value="100" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -925,7 +925,7 @@
         <xs:documentation>model of hardware</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="SerialNo" type="aae:ShortString">
+    <xs:attribute name="SerialNo" type="aae:LongString">
       <xs:annotation>
         <xs:documentation>serial number of hardware</xs:documentation>
       </xs:annotation>

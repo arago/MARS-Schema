@@ -468,6 +468,7 @@
       <xs:enumeration value="MSRDP" />
       <xs:enumeration value="MSSCSM" />
       <xs:enumeration value="MSSQL" />
+      <xs:enumeration value="MSProjectServer" />
       <xs:enumeration value="MSIServicePro" />
       <xs:enumeration value="MSSearchServer" />
       <xs:enumeration value="Mule" />
@@ -3991,6 +3992,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:ProductivityAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="LotusSymphony" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MSProjectServer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProductivityAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="MSProjectServer" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

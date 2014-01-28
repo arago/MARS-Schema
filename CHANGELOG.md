@@ -5,6 +5,10 @@ Changelog of MARS Schema
 
 ## next Version 4.1.4
 
+- *included fixes*
+  + [new SoftwareSubClass "MSProjectServer" for SoftwareClass "Productivity"](../../issues/22)
+  + [allow longer strings for some fields](../../pull/21)
+
 ## Version 4.1.3
 
 - *Date:* Jan 13 2014

@@ -4277,6 +4277,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="DynamicsCRM">
+    <xs:annotation>
+      <xs:documentation>Microsoft Dynamics CRM</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:CRMAttributes">

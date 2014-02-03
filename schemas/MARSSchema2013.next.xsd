@@ -7,6 +7,16 @@
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
+  <xs:simpleType name="AutomationStateType">
+    <xs:annotation>
+      <xs:documentation>special node attribute telling automation system whether to deal with ("Automated") that node or ingore it ()</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Automated" />
+      <xs:enumeration value="Manual" />
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="ShortString">
     <xs:annotation>
       <xs:documentation>a name</xs:documentation>
@@ -1666,6 +1676,7 @@
         <xs:documentation>information about service level agreements</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="AutomationState" type="aae:AutomationStateType" />
     <xs:attribute name="Clustertype" type="aae:ClustertypeType" />
     <xs:attribute name="NominalState" type="aae:StatusType" />
     <xs:attribute name="MonitoringStatus" type="aae:StatusType" />
@@ -4277,6 +4288,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="DynamicsCRM">
+    <xs:annotation>
+      <xs:documentation>Microsoft Dynamics CRM</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:CRMAttributes">

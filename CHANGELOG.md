@@ -9,6 +9,7 @@ Changelog of MARS Schema
   + [new SoftwareSubClass "MSProjectServer" for SoftwareClass "Productivity"](../../issues/22)
   + [allow longer strings for some fields](../../pull/21)
   + [changed MonitoringStatus to numeric status type](../../pull/26)
+
 ## Version 4.1.3
 
 - *Date:* Jan 13 2014

@@ -185,6 +185,34 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="StatusTypeNumeric">
+    <xs:annotation>
+      <xs:documentation>status type of node status</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Numerical value for UNKNOWN</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Numerical value for OK</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Numerical value for WARN</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Numerical value for CRITICAL</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
   <xs:simpleType name="ClustertypeType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Single" />
@@ -1679,7 +1707,7 @@
     <xs:attribute name="AutomationState" type="aae:AutomationStateType" />
     <xs:attribute name="Clustertype" type="aae:ClustertypeType" />
     <xs:attribute name="NominalState" type="aae:StatusType" />
-    <xs:attribute name="MonitoringStatus" type="aae:StatusType" />
+    <xs:attribute name="MonitoringStatus" type="aae:StatusTypeNumeric" />
     <xs:attribute name="MonitoringStatusMessage" type="xs:string" />
     <xs:attribute name="EventCounter.Warning" type="xs:int" />
     <xs:attribute name="EventCounter.Critical" type="xs:int" />

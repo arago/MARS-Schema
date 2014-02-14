@@ -6,6 +6,7 @@ Changelog of MARS Schema
 ## next Version 4.1.4
 
 - *included fixes*
+  + [new SoftwareSubClass "MSSharePointServer" for SoftwareClass "Productivity"](../../issues/24)
   + [new SoftwareSubClass "MSProjectServer" for SoftwareClass "Productivity"](../../issues/22)
   + [allow longer strings for some fields](../../pull/21)
   + [changed MonitoringStatus to numeric status type](../../pull/26)

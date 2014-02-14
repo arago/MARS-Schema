@@ -1,9 +1,15 @@
 Changelog of MARS Schema
 ====
 
-# latest Version: 4.1.3
+# latest Version: 4.1.4
 
-## next Version 4.1.4
+## next Version 4.1.5
+
+- *included fixes*
+
+## Version 4.1.4
+
+- *Date:* Feb 14 2014
 
 - *included fixes*
   + [new SoftwareSubClass "MSSharePointServer" for SoftwareClass "Productivity"](../../issues/24)

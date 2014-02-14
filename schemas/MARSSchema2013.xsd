@@ -3,9 +3,19 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="4.1.3" >
+	   version="4.1.4" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
+
+  <xs:simpleType name="AutomationStateType">
+    <xs:annotation>
+      <xs:documentation>special node attribute telling automation system whether to deal with ("Automated") that node or ingore it ()</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Automated" />
+      <xs:enumeration value="Manual" />
+    </xs:restriction>
+  </xs:simpleType>
 
   <xs:simpleType name="ShortString">
     <xs:annotation>
@@ -27,7 +37,7 @@
   <xs:simpleType name="NameString">
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-zA-Z0-9].*[a-zA-Z0-9\)]" />
-      <xs:maxLength value="50" />
+      <xs:maxLength value="100" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -172,6 +182,34 @@
       <xs:enumeration value="CRITICAL" />
       <xs:enumeration value="MAINTENANCE" />
       <xs:enumeration value="UNKNOWN" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="StatusTypeNumeric">
+    <xs:annotation>
+      <xs:documentation>status type of node status</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:enumeration value="0">
+        <xs:annotation>
+          <xs:documentation>Numerical value for UNKNOWN</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="1">
+        <xs:annotation>
+          <xs:documentation>Numerical value for OK</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="2">
+        <xs:annotation>
+          <xs:documentation>Numerical value for WARN</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="3">
+        <xs:annotation>
+          <xs:documentation>Numerical value for CRITICAL</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 
@@ -468,6 +506,8 @@
       <xs:enumeration value="MSRDP" />
       <xs:enumeration value="MSSCSM" />
       <xs:enumeration value="MSSQL" />
+      <xs:enumeration value="MSProjectServer" />
+      <xs:enumeration value="MSSharePointServer" />
       <xs:enumeration value="MSIServicePro" />
       <xs:enumeration value="MSSearchServer" />
       <xs:enumeration value="Mule" />
@@ -925,7 +965,7 @@
         <xs:documentation>model of hardware</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="SerialNo" type="aae:ShortString">
+    <xs:attribute name="SerialNo" type="aae:LongString">
       <xs:annotation>
         <xs:documentation>serial number of hardware</xs:documentation>
       </xs:annotation>
@@ -1665,9 +1705,10 @@
         <xs:documentation>information about service level agreements</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="AutomationState" type="aae:AutomationStateType" />
     <xs:attribute name="Clustertype" type="aae:ClustertypeType" />
     <xs:attribute name="NominalState" type="aae:StatusType" />
-    <xs:attribute name="MonitoringStatus" type="aae:StatusType" />
+    <xs:attribute name="MonitoringStatus" type="aae:StatusTypeNumeric" />
     <xs:attribute name="MonitoringStatusMessage" type="xs:string" />
     <xs:attribute name="EventCounter.Warning" type="xs:int" />
     <xs:attribute name="EventCounter.Critical" type="xs:int" />
@@ -3995,6 +4036,32 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="MSProjectServer">
+    <xs:annotation>
+      <xs:documentation>Microsoft Project Server: A flexible solution for project portfolio management (PPM) and everyday work.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProductivityAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="MSProjectServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MSSharePointServer">
+    <xs:annotation>
+      <xs:documentation>enhanced version of Microsoft SharePoint that can be deployed on premises</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProductivityAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="MSSharePointServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SOAGovernance">
     <xs:complexType>
       <xs:complexContent>
@@ -4266,6 +4333,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="DynamicsCRM">
+    <xs:annotation>
+      <xs:documentation>Microsoft Dynamics CRM</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:CRMAttributes">
@@ -4356,6 +4426,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="Sharepoint">
+    <xs:annotation>
+      <xs:documentation>deprecated: same as MSSharepointServer but with bad classification</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:EAIAttributes">

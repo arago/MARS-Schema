@@ -12,6 +12,8 @@ Changelog of MARS Schema
 - *Date:* Feb 14 2014
 
 - *included fixes*
+  + [general top level attribute "AutomationState" added](../../pull/25)
+  + [value list for top level attribute "MonitoringStatus" corrected](../../pull/26)
   + [new SoftwareSubClass "MSSharePointServer" for SoftwareClass "Productivity"](../../issues/24)
   + [new SoftwareSubClass "MSProjectServer" for SoftwareClass "Productivity"](../../issues/22)
   + [allow longer strings for some fields](../../pull/21)

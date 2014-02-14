@@ -507,6 +507,7 @@
       <xs:enumeration value="MSSCSM" />
       <xs:enumeration value="MSSQL" />
       <xs:enumeration value="MSProjectServer" />
+      <xs:enumeration value="MSSharePointServer" />
       <xs:enumeration value="MSIServicePro" />
       <xs:enumeration value="MSSearchServer" />
       <xs:enumeration value="Mule" />
@@ -4036,11 +4037,27 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="MSProjectServer">
+    <xs:annotation>
+      <xs:documentation>Microsoft Project Server: A flexible solution for project portfolio management (PPM) and everyday work.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:ProductivityAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="MSProjectServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MSSharePointServer">
+    <xs:annotation>
+      <xs:documentation>enhanced version of Microsoft SharePoint that can be deployed on premises</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProductivityAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="MSSharePointServer" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -4409,6 +4426,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="Sharepoint">
+    <xs:annotation>
+      <xs:documentation>deprecated: same as MSSharepointServer but with bad classification</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:EAIAttributes">

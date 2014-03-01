@@ -463,6 +463,7 @@
       <xs:enumeration value="Hypertable" />
       <xs:enumeration value="HyperV" />
       <xs:enumeration value="HPOpenView" />
+      <xs:enumeration value="HSQLDB" />
       <xs:enumeration value="htdig" />
       <xs:enumeration value="IDSCNetwise" />
       <xs:enumeration value="IIS" />
@@ -567,7 +568,7 @@
       <xs:enumeration value="QlikView" />
       <xs:enumeration value="Qmail" />
       <xs:enumeration value="QuantaPlus" />
-      <xs:enumeration value="RSAAM" />
+      <xs:enumeration value="RabbitMQ" />
       <xs:enumeration value="RedDotCMS" />
       <xs:enumeration value="RedFoxCrypto" />
       <xs:enumeration value="RedPrairie" />
@@ -576,6 +577,7 @@
       <xs:enumeration value="Resin" />
       <xs:enumeration value="RiverbedCascade" />
       <xs:enumeration value="RoadRunner" />
+      <xs:enumeration value="RSAAM" />
       <xs:enumeration value="SAPBusinessOne" />
       <xs:enumeration value="SAPCRM" />
       <xs:enumeration value="SAPERP" />
@@ -659,7 +661,7 @@
       <xs:enumeration value="Zookeeper" />
       <xs:enumeration value="Zotero" />
       <xs:enumeration value="zVM" />
-      <xs:enumeration value="RabbitMQ" />
+      <xs:enumeration value="VMWare" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -3986,6 +3988,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="VMWare">
+    <xs:annotation>
+      <xs:documentation>can stand for any virtualization product from the VMWare family</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:VirtualizationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="VMWare" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="HiQube">
     <xs:complexType>
       <xs:complexContent>
@@ -4022,6 +4037,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Informix" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HSQLDB">
+    <xs:annotation>
+      <xs:documentation>HSQLDB (Hyper SQL Database) is a relational database management system written in Java.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="HSQLDB" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

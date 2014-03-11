@@ -385,6 +385,8 @@
       <xs:enumeration value="BlueCoatProxyAV" />
       <xs:enumeration value="BlueCoatProxySG" />
       <xs:enumeration value="Bluefish" />
+      <xs:enumeration value="BMCPerformanceManager" />
+      <xs:enumeration value="BMCPatrolAgent" />
       <xs:enumeration value="BPEL" />
       <xs:enumeration value="BoschCCS" />
       <xs:enumeration value="Brightpearl" />
@@ -493,6 +495,8 @@
       <xs:enumeration value="LISA" />
       <xs:enumeration value="LPAR" />
       <xs:enumeration value="LVS" />
+      <xs:enumeration value="McAfeeCommonManagementAgent" />
+      <xs:enumeration value="McAfeeVirusScan" />
       <xs:enumeration value="MLTConnectelligence" />
       <xs:enumeration value="MagnoliaCMS" />
       <xs:enumeration value="Mahara" />
@@ -597,6 +601,7 @@
       <xs:enumeration value="SilverStripeCMS" />
       <xs:enumeration value="SimpleDB" />
       <xs:enumeration value="Smail" />
+      <xs:enumeration value="SophosAntiVirus" />
       <xs:enumeration value="SugarCRM" />
       <xs:enumeration value="SummusITMS" />
       <xs:enumeration value="SFTP" />
@@ -6056,6 +6061,73 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="SophosAntiVirus">
+    <xs:annotation>
+      <xs:documentation>Sophos Endpoint protection</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="SophosAntiVirus" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="McAfeeCommonManagementAgent">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="McAfeeCommonManagementAgent" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="McAfeeVirusScan">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="McAfeeVirusScan" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BMCPatrolAgent">
+    <xs:annotation>
+      <xs:documentation>The active component of BPPM installed on each endpoint</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="BMCPatrolAgent" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BMCPerformanceManager">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="BMCPerformanceManager" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+ 
 
   <!-- Resource node elements -->
   <xs:element name="Backend">

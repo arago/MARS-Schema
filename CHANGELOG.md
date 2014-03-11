@@ -6,6 +6,9 @@ Changelog of MARS Schema
 ## next Version 4.1.5
 
 - *included fixes*
+  + [new SoftwareClass/SubClass pairs: Virtualization/VMWare, DBMS/HSQLDB](../../pull/27)
+  + [new SoftwareSubClass for SoftwareClass "Administration": SophosAntiVirus, McAfeeCommonManagementAgent, McAfeeVirusScan](../../issues/28)
+  + [new SoftwareSubClass for SoftwareClass "Administration": BMCPatrolAgent, BMCPerformanceManager](../../issues/29)
 
 ## Version 4.1.4
 

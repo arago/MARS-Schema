@@ -9,6 +9,7 @@ Changelog of MARS Schema
   + [new SoftwareClass/SubClass pairs: Virtualization/VMWare, DBMS/HSQLDB](../../pull/27)
   + [new SoftwareSubClass for SoftwareClass "Administration": SophosAntiVirus, McAfeeCommonManagementAgent, McAfeeVirusScan](../../issues/28)
   + [new SoftwareSubClass for SoftwareClass "Administration": BMCPatrolAgent, BMCPerformanceManager](../../issues/29)
+  + [attribute "StopScript" added to "SoftwareConfiguration"](../../pull/32)
 
 ## Version 4.1.4
 

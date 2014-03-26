@@ -3,7 +3,7 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="4.1.4" >
+	   version="4.1.5" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -385,6 +385,8 @@
       <xs:enumeration value="BlueCoatProxyAV" />
       <xs:enumeration value="BlueCoatProxySG" />
       <xs:enumeration value="Bluefish" />
+      <xs:enumeration value="BMCPerformanceManager" />
+      <xs:enumeration value="BMCPatrolAgent" />
       <xs:enumeration value="BPEL" />
       <xs:enumeration value="BoschCCS" />
       <xs:enumeration value="Brightpearl" />
@@ -463,6 +465,7 @@
       <xs:enumeration value="Hypertable" />
       <xs:enumeration value="HyperV" />
       <xs:enumeration value="HPOpenView" />
+      <xs:enumeration value="HSQLDB" />
       <xs:enumeration value="htdig" />
       <xs:enumeration value="IDSCNetwise" />
       <xs:enumeration value="IIS" />
@@ -492,6 +495,8 @@
       <xs:enumeration value="LISA" />
       <xs:enumeration value="LPAR" />
       <xs:enumeration value="LVS" />
+      <xs:enumeration value="McAfeeCommonManagementAgent" />
+      <xs:enumeration value="McAfeeVirusScan" />
       <xs:enumeration value="MLTConnectelligence" />
       <xs:enumeration value="MagnoliaCMS" />
       <xs:enumeration value="Mahara" />
@@ -567,7 +572,7 @@
       <xs:enumeration value="QlikView" />
       <xs:enumeration value="Qmail" />
       <xs:enumeration value="QuantaPlus" />
-      <xs:enumeration value="RSAAM" />
+      <xs:enumeration value="RabbitMQ" />
       <xs:enumeration value="RedDotCMS" />
       <xs:enumeration value="RedFoxCrypto" />
       <xs:enumeration value="RedPrairie" />
@@ -576,6 +581,7 @@
       <xs:enumeration value="Resin" />
       <xs:enumeration value="RiverbedCascade" />
       <xs:enumeration value="RoadRunner" />
+      <xs:enumeration value="RSAAM" />
       <xs:enumeration value="SAPBusinessOne" />
       <xs:enumeration value="SAPCRM" />
       <xs:enumeration value="SAPERP" />
@@ -595,6 +601,7 @@
       <xs:enumeration value="SilverStripeCMS" />
       <xs:enumeration value="SimpleDB" />
       <xs:enumeration value="Smail" />
+      <xs:enumeration value="SophosAntiVirus" />
       <xs:enumeration value="SugarCRM" />
       <xs:enumeration value="SummusITMS" />
       <xs:enumeration value="SFTP" />
@@ -659,7 +666,7 @@
       <xs:enumeration value="Zookeeper" />
       <xs:enumeration value="Zotero" />
       <xs:enumeration value="zVM" />
-      <xs:enumeration value="RabbitMQ" />
+      <xs:enumeration value="VMWare" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -1890,6 +1897,12 @@
               <xs:attribute name="StartScript" type="xs:string">
                 <xs:annotation>
                   <xs:documentation>path of the software startscript
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
+              <xs:attribute name="StopScript" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>path of the software stopscript
                   </xs:documentation>
                 </xs:annotation>
               </xs:attribute>
@@ -3986,6 +3999,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="VMWare">
+    <xs:annotation>
+      <xs:documentation>can stand for any virtualization product from the VMWare family</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:VirtualizationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="VMWare" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="HiQube">
     <xs:complexType>
       <xs:complexContent>
@@ -4022,6 +4048,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Informix" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HSQLDB">
+    <xs:annotation>
+      <xs:documentation>HSQLDB (Hyper SQL Database) is a relational database management system written in Java.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="HSQLDB" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -6028,6 +6067,73 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="SophosAntiVirus">
+    <xs:annotation>
+      <xs:documentation>Sophos Endpoint protection</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="SophosAntiVirus" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="McAfeeCommonManagementAgent">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="McAfeeCommonManagementAgent" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="McAfeeVirusScan">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="McAfeeVirusScan" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BMCPatrolAgent">
+    <xs:annotation>
+      <xs:documentation>The active component of BPPM installed on each endpoint</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="BMCPatrolAgent" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BMCPerformanceManager">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="BMCPerformanceManager" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+ 
 
   <!-- Resource node elements -->
   <xs:element name="Backend">

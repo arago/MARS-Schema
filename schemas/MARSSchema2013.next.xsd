@@ -1931,6 +1931,29 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:attribute>
+	      <xs:attribute name="Host" type="xs:string">
+		<xs:annotation>
+		  <xs:documentation>name or IP of Host the Software is running (deprecated: needed compatibility with some existing KIs)
+                  </xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
+	      <xs:attribute name="MinProcesses" type="xs:integer">
+		<xs:annotation>
+		  <xs:documentation>minimum number of running processes
+                  </xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
+	      <xs:attribute name="MaxProcesses" type="xs:integer">
+		<xs:annotation>
+		  <xs:documentation>maximum number of running processes
+                  </xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
+	      <xs:attribute name="no_old_proc_check" type="xs:boolean">
+		<xs:annotation>
+		  <xs:documentation>deprecated: needed for compatibility with some existing KIs</xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
             </xs:complexType>
           </xs:element>
         </xs:sequence>

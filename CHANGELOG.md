@@ -7,6 +7,7 @@ Changelog of MARS Schema
 
 - *included fixes*
   + [additional attributes for SoftwareConfiguration](../../pull/35)
+  + [new SoftwareSubClass for SoftwareClass "Proxy": Varnish](../../pull/36)
 
 ## next Version 4.1.5
 

@@ -6,7 +6,7 @@ Changelog of MARS Schema
 ## next Version 4.1.6
 
 - *included fixes*
-  + [additional attributes for SoftwareConfiguration]](../../pull/35)
+  + [additional attributes for SoftwareConfiguration](../../pull/35)
 
 ## next Version 4.1.5
 

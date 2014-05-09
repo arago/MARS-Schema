@@ -640,6 +640,7 @@
       <xs:enumeration value="Umbraco" />
       <xs:enumeration value="Unicenter" />
       <xs:enumeration value="updateSeven" />
+      <xs:enumeration value="Varnish" />
       <xs:enumeration value="vBulletin" />
       <xs:enumeration value="VirtualBox" />
       <xs:enumeration value="VisualStudio" />
@@ -5536,6 +5537,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:AdministrationAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Unicenter" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Varnish">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProxyAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Varnish" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

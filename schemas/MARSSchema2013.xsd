@@ -3,13 +3,13 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="4.1.5" >
+	   version="4.1.6" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
   <xs:simpleType name="AutomationStateType">
     <xs:annotation>
-      <xs:documentation>special node attribute telling automation system whether to deal with ("Automated") that node or ingore it ()</xs:documentation>
+      <xs:documentation>special node attribute telling automation system whether to deal with it normally or not. If no value is specified the value "Automated" is assume which means normal processing.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="Automated" />
@@ -640,6 +640,7 @@
       <xs:enumeration value="Umbraco" />
       <xs:enumeration value="Unicenter" />
       <xs:enumeration value="updateSeven" />
+      <xs:enumeration value="Varnish" />
       <xs:enumeration value="vBulletin" />
       <xs:enumeration value="VirtualBox" />
       <xs:enumeration value="VisualStudio" />
@@ -1931,6 +1932,29 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:attribute>
+	      <xs:attribute name="Host" type="xs:string">
+		<xs:annotation>
+		  <xs:documentation>name or IP of Host the Software is running (deprecated: needed compatibility with some existing KIs)
+                  </xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
+	      <xs:attribute name="MinProcesses" type="xs:integer">
+		<xs:annotation>
+		  <xs:documentation>minimum number of running processes
+                  </xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
+	      <xs:attribute name="MaxProcesses" type="xs:integer">
+		<xs:annotation>
+		  <xs:documentation>maximum number of running processes
+                  </xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
+	      <xs:attribute name="no_old_proc_check" type="xs:boolean">
+		<xs:annotation>
+		  <xs:documentation>deprecated: needed for compatibility with some existing KIs</xs:documentation>
+		</xs:annotation>
+	      </xs:attribute>
             </xs:complexType>
           </xs:element>
         </xs:sequence>
@@ -5536,6 +5560,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:AdministrationAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Unicenter" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Varnish">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProxyAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Varnish" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

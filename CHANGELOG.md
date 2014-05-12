@@ -1,9 +1,11 @@
 Changelog of MARS Schema
 ====
 
-# latest Version: 4.1.5
+# latest Version: 4.1.6
 
-## next Version 4.1.6
+## next Version 5.0.0
+
+## Version 4.1.6
 
 - *included fixes*
   + [additional attributes for SoftwareConfiguration](../../pull/35)

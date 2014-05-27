@@ -479,6 +479,7 @@
       <xs:enumeration value="JDK" />
       <xs:enumeration value="JedoxBiSuite" />
       <xs:enumeration value="JOnAS" />
+      <xs:enumeration value="JOSSO2" />
       <xs:enumeration value="JIRA" />
       <xs:enumeration value="Jive" />
       <xs:enumeration value="Joomla" />
@@ -4251,6 +4252,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:ITSMAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="JIRA" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JOSSO2">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ApplicationServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="JOSSO2" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

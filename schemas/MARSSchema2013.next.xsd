@@ -482,6 +482,7 @@
       <xs:enumeration value="JIRA" />
       <xs:enumeration value="Jive" />
       <xs:enumeration value="Joomla" />
+      <xs:enumeration value="JOSSO2" />
       <xs:enumeration value="jRun" />
       <xs:enumeration value="JRE" />
       <xs:enumeration value="KPIMonitor" />
@@ -4577,6 +4578,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:IAMAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Mitto" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="JOSSO2">
+    <xs:annotation>
+      <xs:documentation>Java Open Single Sign-On from Atricore (http://atrictore.com)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="JOSSO2" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

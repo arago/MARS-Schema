@@ -9,7 +9,7 @@ The MARS model builds upon four basic types of objects with a single type of rel
 
 # What does MARS mean?
 
-MARS is a wordplay with the initial letters of the four basis object types contained - __M__achine, __A__pplication, __R__essource and __S__oftware 
+MARS is a wordplay with the initial letters of the four basis object types contained - **M**achine, **A**pplication, **R**essource and **S**oftware 
 
 # What is MARS used for?
 

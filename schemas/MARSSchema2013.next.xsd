@@ -541,6 +541,7 @@
       <xs:enumeration value="OpenVZ" />
       <xs:enumeration value="OperationsManager" />
       <xs:enumeration value="Oracle" />
+      <xs:enumeration value="OracleASM" />
       <xs:enumeration value="OracleBIS" />
       <xs:enumeration value="OracleEBS" />
       <xs:enumeration value="OracleESB" />
@@ -5254,6 +5255,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:FileServicesAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Samba" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="OracleASM">
+    <xs:annotation>
+      <xs:documentation>Oracle Automatic Storage Management</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:FileServicesAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="OracleASM" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

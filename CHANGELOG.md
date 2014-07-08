@@ -1,9 +1,15 @@
 Changelog of MARS Schema
 ====
 
-# latest Version: 4.1.6
+# latest Version: 4.1.7
 
 ## next Version 5.0.0
+
+## Version 4.1.7
+
+- *included fixes*
+  + [new SoftwareSubClass for SoftwareClass "IAM": JOSSO2](../../pull/37)
+  + [new SoftwareSubClass for SoftwareClass "FileServices": OracleASM](../../issues/38)
 
 ## Version 4.1.6
 

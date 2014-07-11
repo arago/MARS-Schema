@@ -1,9 +1,9 @@
 Changelog of MARS Schema
 ====
 
-# latest Version: 4.1.7
+# latest Version: 5.0.0
 
-## next Version 5.0.0
+## next Version 5.0.1
 
 ## Version 5.0.0
 

@@ -3,7 +3,7 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="5.0.0" >
+	   version="5.0.1" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 

@@ -598,7 +598,6 @@
       <xs:enumeration value="StingrayTrafficManager" />
       <xs:enumeration value="ServiceDeskExpress" />
       <xs:enumeration value="ServiceMix" />
-      <xs:enumeration value="Sharepoint" />
       <xs:enumeration value="SiebelCRM" />
       <xs:enumeration value="SilverStripeCMS" />
       <xs:enumeration value="SimpleDB" />
@@ -4490,19 +4489,6 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Sharepoint">
-    <xs:annotation>
-      <xs:documentation>deprecated: same as MSSharepointServer but with bad classification</xs:documentation>
-    </xs:annotation>
-    <xs:complexType>
-      <xs:complexContent>
-        <xs:extension base="aae:EAIAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
-                        fixed="Sharepoint" />
-        </xs:extension>
-      </xs:complexContent>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="VisualStudio">
     <xs:complexType>
       <xs:complexContent>
@@ -5563,6 +5549,9 @@ The BSD MachineClass is used to cover the following descendants of the original 
     </xs:complexType>
   </xs:element>
   <xs:element name="Typo3">
+    <xs:annotation>
+      <xs:documentation>TYPO3 - Open Source Enterprise CMS. https://typo3.org</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:CMSAttributes">

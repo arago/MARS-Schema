@@ -5,6 +5,11 @@ Changelog of MARS Schema
 
 ## next Version 5.0.0
 
+## Version 5.0.0
+
+- *changes incompatible with version 4.1*
+  + [SoftwareClass/SubClass "EAI"/"Sharepoint" removed. Use "Productivity"/"MSSharePointServer" instead](../../issues/34)
+
 ## Version 4.1.7
 
 - *included fixes*

@@ -4866,7 +4866,7 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>	
-  <xs:element name="Hyptertable">
+  <xs:element name="Hypertable">
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DBMSAttributes">

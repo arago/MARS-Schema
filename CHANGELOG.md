@@ -5,18 +5,27 @@ Changelog of MARS Schema
 
 ## next Version 5.0.1
 
+- *included fixes*
+  + [new SoftwareSubClass for SoftwareClass "IAM": WSO2IS](../../pull/39)
+
 ## Version 5.0.0
+
+- *Date:* Jul 11 2014
 
 - *changes incompatible with version 4.1*
   + [SoftwareClass/SubClass "EAI"/"Sharepoint" removed. Use "Productivity"/"MSSharePointServer" instead](../../issues/34)
 
 ## Version 4.1.7
 
+- *Date:* Jul 08 2014
+
 - *included fixes*
   + [new SoftwareSubClass for SoftwareClass "IAM": JOSSO2](../../pull/37)
   + [new SoftwareSubClass for SoftwareClass "FileServices": OracleASM](../../issues/38)
 
 ## Version 4.1.6
+
+- *Date:* May 12 2014
 
 - *included fixes*
   + [additional attributes for SoftwareConfiguration](../../pull/35)

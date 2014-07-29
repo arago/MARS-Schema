@@ -658,6 +658,7 @@
       <xs:enumeration value="WebWorkCMMS" />
       <xs:enumeration value="Wolin" />
       <xs:enumeration value="WordPress" />
+      <xs:enumeration value="WSO2IS" />
       <xs:enumeration value="Xcode" />
       <xs:enumeration value="Yammer" />
       <xs:enumeration value="Zabbix" />
@@ -5687,6 +5688,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:ApplicationServerAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Websphere" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WSO2IS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">WSO2 Identity Server: http://wso2.com/products/identity-server</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="WSO2IS" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

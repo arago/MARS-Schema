@@ -6,6 +6,7 @@ import argparse
 import xml.dom.minidom
 import re
 import pprint
+import sys
 
 # TODO: get namespace prefixes from root element
 xs_prefix = 'xs:'
@@ -157,6 +158,62 @@ def strip_aae_prefix(inStr):
     outStr= re.sub(r'^'+aae_prefix, '', inStr)
     return outStr
     
+# ----------------------------------------------------------------------- #
+# helper functions for XHTML output
+# ----------------------------------------------------------------------- #
+def printHTMLHeader():
+    print "<html><body>"
+
+def printHTMLFooter():
+    print "</body></html>"
+
+def printHTMLTable3Col(data_hash, title, classkey, subclasskey):
+    print "<h2>%s</h2>" % title
+    print "<table><thead><tr><td>%s</td><td>%s</td><td>Description</td></tr></thead>" % (classkey, subclasskey)
+    print "<tbody>"
+    # here we do the data ordering
+    a_classes = {}
+    a_sub_classes = {}
+    for el in data_hash.keys():
+        a_class = data_hash[el][classkey]
+        a_sub_class = data_hash[el][subclasskey]
+        a_classes[a_class] = 0 # dummy value
+        if not a_sub_classes.has_key(a_class):
+            a_sub_classes[a_class] = []
+        a_sub_classes[a_class].append(a_sub_class)
+    # sort arrays...
+    for cl in sorted(a_classes.keys()):
+        for sub_cl in sorted(a_sub_classes[cl]):
+            # here we use the fact that 'key' in data_hash equals sub_cl
+            #print "DEBUG: title=[%s] cl=[%s] scl=[%s]" % (title, cl, sub_cl)
+            if data_hash.has_key(sub_cl):
+                print "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" % (cl, sub_cl, "<br />".join(data_hash[sub_cl]['_doc']))
+            else:
+                sys.stderr.write("Error in Schema for "+subclasskey+ " \""+sub_cl+"\"\n") 
+                
+    print "</tbody></table>"
+
+def printHTMLTable2Col(data_hash, title, classkey):
+    print "<h2>%s</h2>" % title
+    print "<table><thead><tr><td>%s</td><td>Description</td></tr></thead>" % (classkey)
+    print "<tbody>"
+    # here we do the data ordering
+    a_classes = {}
+    for el in data_hash.keys():
+        a_class = data_hash[el][classkey]
+        a_classes[a_class] = 0 # dummy value
+    # sort arrays...
+    for cl in sorted(a_classes.keys()):
+        # here we use the fact that 'key' in data_hash equals sub_cl
+        #print "DEBUG: title=[%s] cl=[%s] scl=[%s]" % (title, cl, sub_cl)
+        if data_hash.has_key(cl):
+            print "<tr><td>%s</td><td>%s</td></tr>" % (cl, "<br />".join(data_hash[cl]['_doc']))
+        else:
+            sys.stderr.write("Error in Schema for "+classkey+ " \""+cl+"\"\n") 
+                
+    print "</tbody></table>"
+
+
 
 # ----------------------------------------------------------------------- #
 # helper function:
@@ -171,6 +228,7 @@ def getXMLText(node):
 
 
 
+
 # ----------------------------------------------------------------------- #
 # main
 # ----------------------------------------------------------------------- #
@@ -179,8 +237,30 @@ parser = argparse.ArgumentParser(description='')
 parser.add_argument("-s", "--schema", dest="schema_file", help="path to MARS schema file", required=True)
 args = parser.parse_args()
 
+# main data structure
 data = {}
+# will contain:
+
 extract_from_xml(args, data)
-# TODO: add output routine
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(data)
+
+printHTMLHeader()
+printHTMLTable3Col(data['Application']['elements'], 
+                   "Application Node Classifications", 
+                   "ApplicationClass",
+                   "ApplicationSubClass" )
+printHTMLTable2Col(data['Resource']['elements'], 
+                   "Resource Node Classifications", 
+                   "ResourceClass" )
+printHTMLTable3Col(data['Software']['elements'], 
+                   "Software Node Classifications", 
+                   "SoftwareClass",
+                   "SoftwareSubClass" )
+printHTMLTable2Col(data['Machine']['elements'], 
+                   "Machine Node Classifications", 
+                   "MachineClass" )
+printHTMLFooter()
+
+# DEBUGGING OUTPUT
+#pp = pprint.PrettyPrinter(indent=4)
+#pp.pprint(data['Application']['types'])
+#pp.pprint(data['Software']['elements'])

@@ -31,8 +31,10 @@ master_types = {
 def extract_from_xml(cfg, data_hash):
     dom = xml.dom.minidom.parse(cfg.schema_file)
     root = dom.getElementsByTagName(xs_prefix+"schema")
+    version = None
     #pp = pprint.PrettyPrinter(indent=4)
     if root:
+        version = root[0].getAttribute("version")
         # temporary data structures:
         el_data = {}
         ct_data = {}
@@ -80,7 +82,7 @@ def extract_from_xml(cfg, data_hash):
     else:
         # TODO: throw exception
         print "NO ROOT ELEMENT FOUND"
-    return
+    return version
 
 
 def parse_element_data(node):
@@ -167,9 +169,12 @@ def printHTMLHeader():
 def printHTMLFooter():
     print "</body></html>"
 
+def printHTMLVersion(version):
+    print "<h1>Node classifications from MARS Schema %s</h1>" % version
+
 def printHTMLTable3Col(data_hash, title, classkey, subclasskey):
     print "<h2>%s</h2>" % title
-    print "<table><thead><tr><td>%s</td><td>%s</td><td>Description</td></tr></thead>" % (classkey, subclasskey)
+    print "<table><thead><tr><th align=\"left\">%s</th><th align=\"left\">%s</th><th align=\"left\">Description</th></tr></thead>" % (classkey, subclasskey)
     print "<tbody>"
     # here we do the data ordering
     a_classes = {}
@@ -195,7 +200,7 @@ def printHTMLTable3Col(data_hash, title, classkey, subclasskey):
 
 def printHTMLTable2Col(data_hash, title, classkey):
     print "<h2>%s</h2>" % title
-    print "<table><thead><tr><td>%s</td><td>Description</td></tr></thead>" % (classkey)
+    print "<table><thead><tr><th align=\"left\">%s</th><th align=\"left\">Description</th></tr></thead>" % (classkey)
     print "<tbody>"
     # here we do the data ordering
     a_classes = {}
@@ -241,9 +246,10 @@ args = parser.parse_args()
 data = {}
 # will contain:
 
-extract_from_xml(args, data)
+schema_version = extract_from_xml(args, data)
 
 printHTMLHeader()
+printHTMLVersion(schema_version)
 printHTMLTable3Col(data['Application']['elements'], 
                    "Application Node Classifications", 
                    "ApplicationClass",

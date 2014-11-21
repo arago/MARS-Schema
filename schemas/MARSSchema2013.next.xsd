@@ -487,6 +487,7 @@
       <xs:enumeration value="JRE" />
       <xs:enumeration value="KPIMonitor" />
       <xs:enumeration value="KVM" />
+      <xs:enumeration value="LDAP" />
       <xs:enumeration value="lighttpd" />
       <xs:enumeration value="LibreOffice" />
       <xs:enumeration value="Liferay" />
@@ -4313,6 +4314,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:VirtualizationAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="KVM" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LDAP">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="LDAP" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

@@ -415,6 +415,7 @@
       <xs:enumeration value="Dovecot" />
       <xs:enumeration value="DSPAM" />
       <xs:enumeration value="DIDiver" />
+      <xs:enumeration value="DirectoryServer389" />
       <xs:enumeration value="DocMe" />
       <xs:enumeration value="Dolphin" />
       <xs:enumeration value="dotCMS" />
@@ -3931,6 +3932,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:BusinessIntelligenceAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="DIDiver" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DirectoryServer389">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="DirectoryServer389" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

@@ -13,7 +13,7 @@ MARS is a wordplay with the initial letters of the four basis object types conta
 
 # What is MARS used for?
 
-MARS is currently incorporated in two different products, which are the [arago Autopilot for IT Operations](http://www.arago.de/autopilot-ce/) and [MARS-o-matic](http://www.marsomatic.com), which is an iPad App for modelling and benchmarking IT environment. Because MARS is based on an open XML format it is easy to implement and data stored in the MARS format could easily integrated into other software/services.
+MARS is currently incorporated in two different products, which are the [arago Autopilot for IT Operations](https://www.autopilot.co) and [MARS-o-matic](http://www.marsomatic.com), which is an iPad App for modelling and benchmarking IT environment. Because MARS is based on an open XML format it is easy to implement and data stored in the MARS format could easily integrated into other software/services.
 
 # How can I contribute?
 

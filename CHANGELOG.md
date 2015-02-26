@@ -11,7 +11,7 @@ Changelog of MARS Schema
 
 - *included fixes*
   + [new SoftwareSubClass for SoftwareClass "IAM": WSO2IS](../../pull/39)
-  + [new SoftwareClass "LDAP" with SubClasses: "OpenLDAP", "DirectoryServer389"]
+  + new SoftwareClass "LDAP" with SubClasses: "OpenLDAP", "DirectoryServer389"
   + [new Attribute "AutoRestart" for SoftwareConfiguration](../../pull/43)
 
 ## Version 5.0.0

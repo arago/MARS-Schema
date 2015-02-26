@@ -1928,6 +1928,12 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:attribute>
+              <xs:attribute name="AutoRestart" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>automatic restarts enabled/disabled
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
               <xs:attribute name="NetworkPort" type="aae:Port">
                 <xs:annotation>
                   <xs:documentation>listening port of the software

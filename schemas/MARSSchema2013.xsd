@@ -3,7 +3,7 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="5.0.0" >
+	   version="5.0.1" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -332,6 +332,7 @@
       <xs:enumeration value="IAM" />
       <xs:enumeration value="IndividualApplication" />
       <xs:enumeration value="ITSM" />
+      <xs:enumeration value="LDAP" />
       <xs:enumeration value="MIS" />
       <xs:enumeration value="MailServer" />
       <xs:enumeration value="Networking" />
@@ -412,6 +413,7 @@
       <xs:enumeration value="Crond" />
       <xs:enumeration value="DB2" />
       <xs:enumeration value="DBS" />
+      <xs:enumeration value="DirectoryServer389" />
       <xs:enumeration value="Dovecot" />
       <xs:enumeration value="DSPAM" />
       <xs:enumeration value="DIDiver" />
@@ -535,6 +537,7 @@
       <xs:enumeration value="OfficeSuite" />
       <xs:enumeration value="OpenAM" />
       <xs:enumeration value="Openfire" />
+      <xs:enumeration value="OpenLDAP" />
       <xs:enumeration value="OpenNMS" />
       <xs:enumeration value="OpenSSH" />
       <xs:enumeration value="OpenView" />
@@ -658,6 +661,7 @@
       <xs:enumeration value="WebWorkCMMS" />
       <xs:enumeration value="Wolin" />
       <xs:enumeration value="WordPress" />
+      <xs:enumeration value="WSO2IS" />
       <xs:enumeration value="Xcode" />
       <xs:enumeration value="Yammer" />
       <xs:enumeration value="Zabbix" />
@@ -1927,6 +1931,12 @@
                   </xs:documentation>
                 </xs:annotation>
               </xs:attribute>
+              <xs:attribute name="AutoRestart" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>automatic restarts enabled/disabled
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
               <xs:attribute name="NetworkPort" type="aae:Port">
                 <xs:annotation>
                   <xs:documentation>listening port of the software
@@ -2697,6 +2707,20 @@ The BSD MachineClass is used to cover the following descendants of the original 
               bezeichnet die Gesamtheit von Massnahmen und Methoden, die nötig
               sind, um die bestmögliche Unterstützung von Geschäftsprozessen
               durch die IT-Organisation zu erreichen.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="LDAPAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="LDAP">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">The Lightweight Directory Access Protocol (LDAP) is an open, vendor-neutral, industry standard application protocol for accessing and maintaining distributed directory information services over an Internet Protocol (IP) network
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -3610,6 +3634,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DBMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="DBS" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DirectoryServer389">
+    <xs:annotation>
+      <xs:documentation>The 389 Directory Server (previously Fedora Directory Server) is an LDAP (Lightweight Directory Access Protocol) server developed by Red Hat, as part of Red Hat's community-supported Fedora Project.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:LDAPAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="DirectoryServer389" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -4712,6 +4749,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="OpenLDAP">
+    <xs:annotation>
+      <xs:documentation>OpenLDAP is a free, open source implementation of the Lightweight Directory Access Protocol (LDAP) developed by the OpenLDAP Project. It is released under its own BSD-style license called the OpenLDAP Public License</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:LDAPAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="OpenLDAP" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="OpenNMS">
     <xs:complexType>
       <xs:complexContent>
@@ -5687,6 +5737,19 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:ApplicationServerAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Websphere" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WSO2IS">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">WSO2 Identity Server: http://wso2.com/products/identity-server</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="WSO2IS" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

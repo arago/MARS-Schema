@@ -3,7 +3,7 @@
            targetNamespace="http://mars-o-matic.com" 
            xmlns:aae="http://mars-o-matic.com"
            elementFormDefault="qualified"
-	   version="5.0.1" >
+	   version="5.0.2" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -457,6 +457,7 @@
       <xs:enumeration value="GenevaBMS" />
       <xs:enumeration value="Geronimo" />
       <xs:enumeration value="Glassfish" />
+      <xs:enumeration value="GraphIT" />
       <xs:enumeration value="GoogleAppEngine" />
       <xs:enumeration value="GoogleDocs" />
       <xs:enumeration value="GoogleMini" />
@@ -4037,6 +4038,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
         <xs:extension base="aae:DataProcessingAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="GuardusMES" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GraphIT">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DataProcessingAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="GraphIT" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

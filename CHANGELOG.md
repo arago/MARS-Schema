@@ -1,9 +1,13 @@
 Changelog of MARS Schema
 ====
 
-# latest Version: 5.0.1
+# latest Version: 5.0.2
 
-## next Version 5.0.2
+## next Version 5.0.3
+
+## Version 5.0.2
+
+- *Date:* Jun 23 2015
 
 - *included fixes*
   + new SoftwareSubClass for SoftwareClass "DataProcessing": GraphIT

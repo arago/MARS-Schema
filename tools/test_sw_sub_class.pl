@@ -4,6 +4,7 @@
 # SW class/subclass
 # 
 use strict;
+use File::Basename;
 use Getopt::Long qw(:config no_ignore_case);
 
 my ($class, $subclass, $schema_file);
@@ -42,7 +43,7 @@ my $cmd = 'xmllint';
 $cmd = $tool_path.'/'.$cmd if ($tool_path);
 $cmd .= ' --schema '.$schema_file if ($schema_file);
 
-my $tmp_file = '/tmp/'.$0.'.'.$$;
+my $tmp_file = '/tmp/'.basename($0).'.'.$$;
 $cmd .= ' '.$tmp_file;
 if(open(TMP, ">", $tmp_file)) {
     print TMP $xml_text;

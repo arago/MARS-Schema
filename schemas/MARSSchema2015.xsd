@@ -1205,66 +1205,67 @@
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NetworkInterface" type="aae:GenericList">
+                    <xs:element name="NetworkInterface" type="aae:GenericList" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>list of network interface names (e.g. eth0)</xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NetworkInterfaceMAC" type="aae:GenericMap">
+                    <xs:element name="NetworkInterfaceMAC" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>MAC adress of network interface card (e.g.
                                 00:00:00:00:00:00), key must be interface name
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NetworkInterfaceIP" type="aae:GenericMap">
+                    <xs:element name="NetworkInterfaceIP" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>IP address of interface (e.g. 10.251.30.40), key must be interface name
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NetworkInterfaceNetmask" type="aae:GenericMap">
+                    <xs:element name="NetworkInterfaceNetmask" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>netmask address of interface (e.g. 255.255.255.0), key must be interface name
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NetworkInterfaceType" type="aae:GenericMap">
+                    <xs:element name="NetworkInterfaceType" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>type of interface (IPv4, IPv6, VirtualIPv4, VirtualIPv6), key must be interface name
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="NetworkInterfacePrefixLength" type="aae:GenericMap">
+                    <xs:element name="NetworkInterfacePrefixLength" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>The prefix length of an IPv6 address (determines host/networ part), key must be interface name</xs:documentation>
                         </xs:annotation>
                     
                     </xs:element>
-                    <xs:element name="Route" type="aae:GenericList" />
-                    <xs:element name="RouteNetmask" type="aae:GenericMap">
+                    <xs:element name="Route" type="aae:GenericList" minOccurs="0" />
+                    <xs:element name="RouteNetmask" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>netmask address of interface (e.g. 255.255.255.0), key must be interface name
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
                     
-                    <xs:element name="Route" type="aae:GenericList" />
-                    <xs:element name="RouteInterface" type="aae:GenericMap" />
-                    <xs:element name="RouteDestination" type="aae:GenericMap" />
-                    <xs:element name="RouteGateway" type="aae:GenericMap" />
+                    <xs:element name="Route" type="aae:GenericList" minOccurs="0"/>
+                    <xs:element name="RouteInterface" type="aae:GenericMap" minOccurs="0"/>
+                    <xs:element name="RouteDestination" type="aae:GenericMap" minOccurs="0"/>
+                    <xs:element name="RouteGateway" type="aae:GenericMap" minOccurs="0"/>
                     
-                    <xs:element name="Filesystem" type="aae:GenericList" />
-                    <xs:element name="FilesystemMountPoint" type="aae:GenericMap" />
-                    <xs:element name="FilesystemMountOptions" type="aae:GenericMap" />
-                    <xs:element name="FilesystemType" type="aae:GenericMap" />
-                    <xs:element name="FilesystemSpaceUnit" type="aae:GenericMap">
+                    <xs:element name="Filesystem" type="aae:GenericList" minOccurs="0"/>
+                    <xs:element name="FilesystemMountPoint" type="aae:GenericMap" minOccurs="0"/>
+                    <xs:element name="FilesystemMountOptions" type="aae:GenericMap" minOccurs="0" />
+                    <xs:element name="FilesystemType" type="aae:GenericMap" minOccurs="0"/>
+                    <xs:element name="FilesystemSpaceUnit" type="aae:GenericMap" minOccurs="0">
                         <xs:annotation>
                             <xs:documentation>k, M, G, T, ..., key must be device name
                             </xs:documentation>
                         </xs:annotation>
                     </xs:element>
-                    <xs:element name="FilesystemSpaceTotal" type="aae:GenericMap" />
+                    <xs:element name="FilesystemSpaceTotal" type="aae:GenericMap" minOccurs="0"/>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
                 </xs:sequence>
                 <xs:attribute name="NodeType" type="aae:NodeType" fixed="Machine" use="required">
                     <xs:annotation>
@@ -1282,13 +1283,13 @@
                     </xs:annotation>
                 </xs:attribute>
                 <xs:attribute name="MachineArchitecture" type="aae:MachineArchitecture"/>
-                <xs:attribute name="OSVendor" type="aae:ShortString" use="required">
+                <xs:attribute name="OSVendor" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>vendor of operating system</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="OSName" type="aae:ShortString" use="required" />
-                <xs:attribute name="OSMajorVersion" type="aae:ShortString" use="required">
+                <xs:attribute name="OSName" type="aae:ShortString"/>
+                <xs:attribute name="OSMajorVersion" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>major version operating system</xs:documentation>
                     </xs:annotation>
@@ -1382,7 +1383,7 @@
                         <xs:documentation>contact information of hardware responsible</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="DataCenterName" type="aae:ShortString" use="required" >
+                <xs:attribute name="DataCenterName" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>name of datacenter (e.g. DC1)</xs:documentation>
                     </xs:annotation>
@@ -1403,12 +1404,12 @@
                         <xs:documentation>name of country (e.g. Germany)</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="DataCenterRoom" type="aae:ShortString" use="required">
+                <xs:attribute name="DataCenterRoom" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>room information (e.g. Room 2)</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="DataCenterRack" type="aae:ShortString" use="required">
+                <xs:attribute name="DataCenterRack" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>rack information (e.g. Rack J)</xs:documentation>
                     </xs:annotation>
@@ -1431,6 +1432,9 @@
     <xs:complexType name="SoftwareAttributes">
         <xs:complexContent>
             <xs:extension base="aae:CommonNodeType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+                </xs:sequence>
                 <xs:attribute name="NodeType" type="aae:NodeType" fixed="Software" use="required">
                     <xs:annotation>
                         <xs:documentation>
@@ -1439,12 +1443,12 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="SWVendor" type="aae:ShortString" use="required">
+                <xs:attribute name="SWVendor" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>vendor of software</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="SWName" type="aae:ShortString" use="required">
+                <xs:attribute name="SWName" type="aae:ShortString">
                     <xs:annotation>
                         <xs:documentation>name of software product</xs:documentation>
                     </xs:annotation>
@@ -1503,7 +1507,7 @@
                         <xs:documentation>end date of service contract</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="LogPath" type="aae:Path" use="required">
+                <xs:attribute name="LogPath" type="aae:Path" >
                     <xs:annotation>
                         <xs:documentation>path of logfiles</xs:documentation>
                     </xs:annotation>
@@ -1614,6 +1618,9 @@
     <xs:complexType name="ResourceAttributes">
         <xs:complexContent>
             <xs:extension base="aae:CommonNodeType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+                </xs:sequence>
                 <xs:attribute name="NodeType" type="aae:NodeType" fixed="Resource" use="required">
                     <xs:annotation>
                         <xs:documentation>
@@ -1634,6 +1641,9 @@
     <xs:complexType name="ApplicationAttributes">
         <xs:complexContent>
             <xs:extension base="aae:CommonNodeType">
+                <xs:sequence>
+                    <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
+                </xs:sequence>
                 <xs:attribute name="NodeType" type="aae:NodeType" fixed="Application" use="required">
                     <xs:annotation>
                         <xs:documentation>

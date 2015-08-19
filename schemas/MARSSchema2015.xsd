@@ -499,6 +499,7 @@
             <xs:enumeration value="GoogleMini" />
             <xs:enumeration value="GoogleSA" />
             <xs:enumeration value="GuardusMES" />
+            <xs:enumeration value="GraphIT" />
             <xs:enumeration value="Hadoop" />
             <xs:enumeration value="HiQube" />
             <xs:enumeration value="Hypertable" />
@@ -3607,6 +3608,16 @@
                 <xs:extension base="aae:DataProcessingAttributes">
                     <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                                   fixed="GuardusMES" />
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="GraphIT">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="aae:DataProcessingAttributes">
+                    <xs:attribute use="required" name="SoftwareSubClass" 
+                                  type="aae:SoftwareSubClass" fixed="GraphIT" />
                 </xs:extension>
             </xs:complexContent>
         </xs:complexType>

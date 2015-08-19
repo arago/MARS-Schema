@@ -9,6 +9,7 @@ use Getopt::Long qw(:config no_ignore_case);
 
 my ($class, $subclass, $schema_file);
 my $show_help = 0;
+my $use_old_schema = 0;
 
 # $tool_path could be used to not rely on PATH to find xmllint
 my $tool_path;
@@ -17,6 +18,7 @@ my $result = GetOptions ("help!" => \$show_help,
 			 "c|class=s" => \$class,
 			 "s|subclass=s" => \$subclass,
 			 "S|schema=s" => \$schema_file,
+			 "compat!" => \$use_old_schema,
     );
 usage() unless ($result);
 usage() if ($show_help);
@@ -39,6 +41,18 @@ my $xml_text = << "EOF";
 </$subclass>
 EOF
 
+my $xml_text_v2 = << "EOF";
+<$subclass xmlns="http://mars-o-matic.com/v2"
+	ID="Test:UnitTests:Software:software1"
+	SoftwareClass="$class"
+	SoftwareSubClass="$subclass"
+	NodeType="Software"
+	NodeName="software1"
+    CustomerID="customer1"
+	>
+</$subclass>
+EOF
+
 my $cmd = 'xmllint';
 $cmd = $tool_path.'/'.$cmd if ($tool_path);
 $cmd .= ' --schema '.$schema_file if ($schema_file);
@@ -46,7 +60,11 @@ $cmd .= ' --schema '.$schema_file if ($schema_file);
 my $tmp_file = '/tmp/'.basename($0).'.'.$$;
 $cmd .= ' '.$tmp_file;
 if(open(TMP, ">", $tmp_file)) {
-    print TMP $xml_text;
+    if ($use_old_schema) {
+	print TMP $xml_text;
+    } else {
+	print TMP $xml_text_v2;
+    }
     close(TMP);
     
     system($cmd);
@@ -70,6 +88,7 @@ More options:
   --class=<class>         same as -c <class>
   --subclass=<subclass>   same as -s <subclass>
   --schema=<schemafile>   same as -S <schemafile>
+  --compat                use old schema (2013)
   --help                  show this help
 EOF
 

@@ -810,89 +810,7 @@
     <!-- Model Type Definitions -->
 
     <!-- Attribute Definitions -->
-    <xs:complexType name="Contact">
-        <xs:attribute name="Name" type="aae:ShortString" />
-        <xs:attribute name="Function" type="aae:LongString">
-            <xs:annotation>
-                <xs:documentation>function of employee</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="Company" type="aae:LongString">
-            <xs:annotation>
-                <xs:documentation>company name</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="eMail" type="aae:email">
-            <xs:annotation>
-                <xs:documentation>
-                    e-mail address of responsible
-                </xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="Phone" type="aae:phone">
-            <xs:annotation>
-                <xs:documentation>
-                    phone number of responsible
-                </xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="ADSUserName" type="aae:ShortString">
-            <xs:annotation>
-                <xs:documentation>
-                    a reference to user from ADS Directory. If this
-                    option is set,
-                    other attributes can be resolved
-                    dynamically and are
-                    not required.
-                </xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-    </xs:complexType>
-
-    <xs:complexType name="Address">
-        <xs:attribute name="Name" type="aae:ShortString" use="required" >
-            <xs:annotation>
-                <xs:documentation>name of datacenter (e.g. DC1)</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="City" type="aae:ShortString" ><!-- use="required" -->
-            <xs:annotation>
-                <xs:documentation>name of city</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="Street" type="aae:ShortString">
-            <xs:annotation>
-                <xs:documentation>name of street and streetnumber
-                </xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-        <xs:attribute name="Country" type="aae:ShortString">
-            <xs:annotation>
-                <xs:documentation>name of country (e.g. Germany)</xs:documentation>
-            </xs:annotation>
-        </xs:attribute>
-    </xs:complexType>
-
-    <xs:complexType name="PhysDisks">
-        <xs:attribute name="ID" type="aae:ID" use="required" />
-        <xs:attribute name="Speed" type="aae:Speed" />
-        <xs:attribute name="Size" type="aae:Size" use="required" /> 
-        <xs:attribute name="SpareDisk" type="aae:SpareDisk" default="No" />
-    </xs:complexType>
-
-    <xs:complexType name="DiskPart">
-        <xs:attribute name="ID" type="aae:ID" use="required" />
-        <xs:attribute name="Name" type="aae:ShortString" />
-        <xs:attribute name="Size" type="aae:Size" use="required" />
-    </xs:complexType>
-
-    <xs:complexType name="LUNs">
-        <xs:attribute name="ID" type="aae:ID" use="required" />
-        <xs:attribute name="Size" type="aae:Size"  use="required" />
-        <xs:attribute name="RaidLevel" type="aae:RaidLevel" />
-        <xs:attribute name="DiskMembers" type="aae:DiskMembers" />
-    </xs:complexType>
-
+ 
     <xs:complexType name="GenericList">
         <xs:sequence>
             <xs:element name="Value" type="aae:BaseListValueType" minOccurs="1" maxOccurs="unbounded" />
@@ -1137,6 +1055,7 @@
     <xs:complexType name="CommonNodeType">
         <xs:sequence>
             <xs:element name="Dependencies" type="aae:DependenciesType" minOccurs="0" />
+            <xs:element name="MAIDChecks" type="aae:GenericMap" minOccurs="0" />
         </xs:sequence>
         <xs:attribute name="ID" type="aae:aaeID" use="required">
             <xs:annotation>
@@ -1164,12 +1083,12 @@
         <xs:attribute name="EventCounter.Critical" type="xs:int" />
         <xs:attribute name="CustomerID" type="aae:customerId" use="required" />
         <xs:attribute name="CustomerName" type="aae:ShortString" />
-        <xs:attribute name="TechC" type="aae:email">
+        <xs:attribute name="TechContact" type="aae:email">
             <xs:annotation>
                 <xs:documentation>contact information of technical responsible</xs:documentation>
             </xs:annotation>
         </xs:attribute>
-        <xs:attribute name="ServiceC" type="aae:email">
+        <xs:attribute name="ServiceContact" type="aae:email">
             <xs:annotation>
                 <xs:documentation>contact information of service manager</xs:documentation>
             </xs:annotation>
@@ -1379,7 +1298,7 @@
                         <xs:documentation>end date of service contract</xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="HardwareC" type="aae:email">
+                <xs:attribute name="HardwareContact" type="aae:email">
                     <xs:annotation>
                         <xs:documentation>contact information of hardware responsible</xs:documentation>
                     </xs:annotation>
@@ -1589,7 +1508,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="SoftwareC" type="aae:email">
+                <xs:attribute name="SoftwareContact" type="aae:email">
                     <xs:annotation>
                         <xs:documentation>contact information of software responsible</xs:documentation>
                     </xs:annotation>
@@ -1630,7 +1549,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="ResourceC" type="aae:email">
+                <xs:attribute name="ResourceContact" type="aae:email">
                     <xs:annotation>
                         <xs:documentation>contact information of resource responsible</xs:documentation>
                     </xs:annotation>
@@ -1653,7 +1572,7 @@
                         </xs:documentation>
                     </xs:annotation>
                 </xs:attribute>
-                <xs:attribute name="ApplicationC" type="aae:email">
+                <xs:attribute name="ApplicationContact" type="aae:email">
                     <xs:annotation>
                         <xs:documentation>contact information of resource responsible</xs:documentation>
                     </xs:annotation>

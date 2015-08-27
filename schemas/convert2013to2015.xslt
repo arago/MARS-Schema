@@ -98,6 +98,19 @@
     <xsl:template match="mars:HardwareInformation" />
     <xsl:template match="mars:SoftwareInformation" />
     <xsl:template match="mars:LocationInformation" />
+
+    <xsl:template match="mars:Extensions">
+        <xsl:element name="MAIDChecks" namespace="http://mars-o-matic.com">
+            <xsl:for-each select="mars:WatchMeConfig/*">
+                <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:attribute name="Key">
+                        <xsl:value-of select="name(.)"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="Content">{<xsl:for-each select="@*">"<xsl:value-of select="name()" />": "<xsl:value-of select="." />",</xsl:for-each>"_dummy": "dummy" }</xsl:attribute>
+                </xsl:element>
+            </xsl:for-each>
+        </xsl:element>
+    </xsl:template>
     
     <xsl:template match="mars:OSServiceInformation">
         <xsl:for-each select="mars:AvailableServices[@Service]">
@@ -353,56 +366,56 @@
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Netmask]">
                 <xsl:element name="RouteNetmask" namespace="http://mars-o-matic.com">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Netmask]">
-                            <xsl:element name="Value" namespace="http://mars-o-matic.com">
-                                <xsl:attribute name="Key">
-                                    <xsl:value-of select="concat(@Destination,':',@Gateway)" />
-                                </xsl:attribute>
-                                <xsl:attribute name="Content">
-                                    <xsl:value-of select="@Netmask" />
-                                </xsl:attribute>
-                            </xsl:element>
+                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                            <xsl:attribute name="Key">
+                                <xsl:value-of select="concat(@Destination,':',@Gateway)" />
+                            </xsl:attribute>
+                            <xsl:attribute name="Content">
+                                <xsl:value-of select="@Netmask" />
+                            </xsl:attribute>
+                        </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
             </xsl:if>
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Interface]">
                 <xsl:element name="RouteInterface" namespace="http://mars-o-matic.com">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Interface]">
-                            <xsl:element name="Value" namespace="http://mars-o-matic.com">
-                                <xsl:attribute name="Key">
-                                    <xsl:value-of select="concat(@Destination,':',@Gateway)" />
-                                </xsl:attribute>
-                                <xsl:attribute name="Content">
-                                    <xsl:value-of select="@Interface" />
-                                </xsl:attribute>
-                            </xsl:element>
+                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                            <xsl:attribute name="Key">
+                                <xsl:value-of select="concat(@Destination,':',@Gateway)" />
+                            </xsl:attribute>
+                            <xsl:attribute name="Content">
+                                <xsl:value-of select="@Interface" />
+                            </xsl:attribute>
+                        </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
             </xsl:if>
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Destination]">
                 <xsl:element name="RouteDestination" namespace="http://mars-o-matic.com">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Gateway]">
-                            <xsl:element name="Value" namespace="http://mars-o-matic.com">
-                                <xsl:attribute name="Key">
-                                    <xsl:value-of select="concat(@Destination,':',@Gateway)" />
-                                </xsl:attribute>
-                                <xsl:attribute name="Content">
-                                    <xsl:value-of select="@Destination" />
-                                </xsl:attribute>
-                            </xsl:element>
+                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                            <xsl:attribute name="Key">
+                                <xsl:value-of select="concat(@Destination,':',@Gateway)" />
+                            </xsl:attribute>
+                            <xsl:attribute name="Content">
+                                <xsl:value-of select="@Destination" />
+                            </xsl:attribute>
+                        </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
             </xsl:if>
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Gateway]">
                 <xsl:element name="RouteGateway" namespace="http://mars-o-matic.com">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Gateway]">
-                            <xsl:element name="Value" namespace="http://mars-o-matic.com">
-                                <xsl:attribute name="Key">
-                                    <xsl:value-of select="concat(@Destination,':',@Gateway)" />
-                                </xsl:attribute>
-                                <xsl:attribute name="Content">
-                                    <xsl:value-of select="@Gateway" />
-                                </xsl:attribute>
-                            </xsl:element>
+                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                            <xsl:attribute name="Key">
+                                <xsl:value-of select="concat(@Destination,':',@Gateway)" />
+                            </xsl:attribute>
+                            <xsl:attribute name="Content">
+                                <xsl:value-of select="@Gateway" />
+                            </xsl:attribute>
+                        </xsl:element>
                     </xsl:for-each>
                 </xsl:element>
             </xsl:if>

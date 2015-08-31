@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://mars-o-matic.com/v2" 
-           xmlns:aae="http://mars-o-matic.com/v2"
+           targetNamespace="https://graphit.co/schemas/v2/MARSSchema" 
+           xmlns:aae="https://graphit.co/schemas/v2/MARSSchema"
            elementFormDefault="qualified"
            version="4.1.4" >
 

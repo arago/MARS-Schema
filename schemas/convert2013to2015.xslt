@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://mars-o-matic.com" xmlns:mars="http://mars-o-matic.com">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="https://graphit.co/schemas/v2/MARSSchema" xmlns:mars="http://mars-o-matic.com" xmlns:marsnew="https://graphit.co/schemas/v2/MARSSchema">
     <xsl:output method="xml" indent="yes" omit-xml-declaration="yes"/>
 
-    <xsl:template match="/*">
-        <xsl:copy>
+    <xsl:namespace-alias stylesheet-prefix="mars" result-prefix="marsnew"/>
+    
+    <xsl:template match="/*" >
+        <xsl:element name="{name()}" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:CustomerInformation/@*">
                 <xsl:attribute name="Customer{name()}">
                     <xsl:value-of select="." />
@@ -90,7 +92,7 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:apply-templates select="node()|@*"/>
-        </xsl:copy>
+        </xsl:element>
     </xsl:template>
     
     <xsl:template match="mars:CustomerInformation" />
@@ -98,15 +100,27 @@
     <xsl:template match="mars:HardwareInformation" />
     <xsl:template match="mars:SoftwareInformation" />
     <xsl:template match="mars:LocationInformation" />
+    <xsl:template match="mars:Dependencies">
+        
+        <xsl:element name="Dependencies" namespace="https://graphit.co/schemas/v2/MARSSchema">
+            <xsl:for-each select="mars:Node">
+                <xsl:element name="Node" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:attribute name="ID">
+                        <xsl:value-of select="@ID"/>
+                    </xsl:attribute>
+                </xsl:element>
+            </xsl:for-each>
+        </xsl:element>
+    </xsl:template>
 
     <xsl:template match="mars:Extensions">
-        <xsl:element name="MAIDChecks" namespace="http://mars-o-matic.com">
+        <xsl:element name="MAIDChecks" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:WatchMeConfig/*">
-                <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:attribute name="Key">
                         <xsl:value-of select="name(.)"/>
                     </xsl:attribute>
-                    <xsl:attribute name="Content">{<xsl:for-each select="@*">"<xsl:value-of select="name()" />": "<xsl:value-of select="." />",</xsl:for-each>"_dummy": "dummy" }</xsl:attribute>
+                    <xsl:attribute name="Content">{<xsl:for-each select="@*">"<xsl:value-of select="name()" />": "<xsl:value-of select="." />",</xsl:for-each>"ConversionDummy": "Dummy"}</xsl:attribute>
                 </xsl:element>
             </xsl:for-each>
         </xsl:element>
@@ -114,7 +128,7 @@
     
     <xsl:template match="mars:OSServiceInformation">
         <xsl:for-each select="mars:AvailableServices[@Service]">
-            <xsl:element name="AvailableServices" namespace="http://mars-o-matic.com">
+            <xsl:element name="AvailableServices" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:call-template name="tokenizeString">
                     <xsl:with-param name="list" select="@Service" />
                     <xsl:with-param name="delimiter" select="':'" />
@@ -122,7 +136,7 @@
             </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="mars:RunningServices[@Service]">
-            <xsl:element name="RunningServices" namespace="http://mars-o-matic.com">
+            <xsl:element name="RunningServices" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:call-template name="tokenizeString">
                     <xsl:with-param name="list" select="@Service" />
                     <xsl:with-param name="delimiter" select="':'" />
@@ -130,7 +144,7 @@
             </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="mars:DisabledServices[@Service]">
-            <xsl:element name="DisabledServices" namespace="http://mars-o-matic.com">
+            <xsl:element name="DisabledServices" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:call-template name="tokenizeString">
                     <xsl:with-param name="list" select="@Service" />
                     <xsl:with-param name="delimiter" select="':'" />
@@ -138,7 +152,7 @@
             </xsl:element>
         </xsl:for-each>
         <xsl:for-each select="mars:ManualServices[@Service]">
-            <xsl:element name="ManualServices" namespace="http://mars-o-matic.com">
+            <xsl:element name="ManualServices" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:call-template name="tokenizeString">
                     <xsl:with-param name="list" select="@Service" />
                     <xsl:with-param name="delimiter" select="':'" />
@@ -156,7 +170,7 @@
         -->
 
         <!--        <xsl:for-each select="ApplicationC">
-            <xsl:element name="ApplicationContact" namespace="http://mars-o-matic.com">
+            <xsl:element name="ApplicationContact" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:attribute name="
             </xsl:element>
         </xsl:for-each>-->
@@ -164,9 +178,9 @@
     </xsl:template>
 
     <xsl:template match="mars:StorageInformation">
-        <xsl:element name="Filesystem" namespace="http://mars-o-matic.com">
+        <xsl:element name="Filesystem" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:FileSystemInformation/mars:FileSystem">
-                <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:attribute name="Content">
                         <xsl:value-of select="@Device" />
                     </xsl:attribute>
@@ -174,10 +188,10 @@
             </xsl:for-each>
         </xsl:element>
         <xsl:if test="mars:FileSystemInformation/*[@MountPoint]">
-            <xsl:element name="FilesystemMountpoint" namespace="http://mars-o-matic.com">
+            <xsl:element name="FilesystemMountpoint" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
@@ -190,10 +204,10 @@
             </xsl:element>
         </xsl:if>
         <xsl:if test="mars:FileSystemInformation/*[@MountOptions]">
-            <xsl:element name="FilesystemMountOptions" namespace="http://mars-o-matic.com">
+            <xsl:element name="FilesystemMountOptions" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
@@ -206,10 +220,10 @@
             </xsl:element>
         </xsl:if>
         <xsl:if test="mars:FileSystemInformation/*[@Type]">
-            <xsl:element name="FilesystemType" namespace="http://mars-o-matic.com">
+            <xsl:element name="FilesystemType" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
@@ -222,10 +236,10 @@
             </xsl:element>
         </xsl:if>
         <xsl:if test="mars:FileSystemInformation/*[@SpaceUnit]">
-            <xsl:element name="FilesystemSpaceUnit" namespace="http://mars-o-matic.com">
+            <xsl:element name="FilesystemSpaceUnit" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
@@ -238,10 +252,10 @@
             </xsl:element>
         </xsl:if>
         <xsl:if test="mars:FileSystemInformation/*[@SpaceTotal]">
-            <xsl:element name="FilesystemSpaceTotal" namespace="http://mars-o-matic.com">
+            <xsl:element name="FilesystemSpaceTotal" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
@@ -256,10 +270,10 @@
     </xsl:template>
 
     <xsl:template match="mars:NetworkInformation">
-        <xsl:element name="NetworkInterface" namespace="http://mars-o-matic.com">
+        <xsl:element name="NetworkInterface" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:InterfaceInformation">
                 <xsl:for-each select="*">
-                    <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Content">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
@@ -269,9 +283,9 @@
         </xsl:element>
         
         <xsl:if test="mars:InterfaceInformation/*[@MAC]">
-            <xsl:element name="NetworkInterfaceMAC" namespace="http://mars-o-matic.com">
+            <xsl:element name="NetworkInterfaceMAC" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*[@MAC]">
-                    <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
@@ -284,10 +298,10 @@
         </xsl:if>
         
         <xsl:if test="mars:InterfaceInformation/*[@IP|@IPv6]">
-            <xsl:element name="NetworkInterfaceIP" namespace="http://mars-o-matic.com">
+            <xsl:element name="NetworkInterfaceIP" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Name" />
                             </xsl:attribute>
@@ -308,9 +322,9 @@
         </xsl:if>
         
         <xsl:if test="mars:InterfaceInformation/*[@Netmask]">
-            <xsl:element name="NetworkInterfaceNetmask" namespace="http://mars-o-matic.com">
+            <xsl:element name="NetworkInterfaceNetmask" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*[@Netmask]">
-                    <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
@@ -323,9 +337,9 @@
         </xsl:if>
         
         <xsl:if test="mars:InterfaceInformation/*">
-            <xsl:element name="NetworkInterfaceType" namespace="http://mars-o-matic.com">
+            <xsl:element name="NetworkInterfaceType" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*">
-                    <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
@@ -338,9 +352,9 @@
         </xsl:if>
 
         <xsl:if test="mars:InterfaceInformation/*[@PrefixLength]">
-            <xsl:element name="NetworkInterfacePrefixLength" namespace="http://mars-o-matic.com">
+            <xsl:element name="NetworkInterfacePrefixLength" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*[@PrefixLength]">
-                    <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
@@ -353,9 +367,9 @@
         </xsl:if>
         
         <xsl:if test="mars:RoutingInformation/mars:Routes">
-            <xsl:element name="Route" namespace="http://mars-o-matic.com">
+            <xsl:element name="Route" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:RoutingInformation/mars:Routes">
-                    <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Content">
                             <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                         </xsl:attribute>
@@ -364,9 +378,9 @@
             </xsl:element>
         
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Netmask]">
-                <xsl:element name="RouteNetmask" namespace="http://mars-o-matic.com">
+                <xsl:element name="RouteNetmask" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Netmask]">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
@@ -378,9 +392,9 @@
                 </xsl:element>
             </xsl:if>
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Interface]">
-                <xsl:element name="RouteInterface" namespace="http://mars-o-matic.com">
+                <xsl:element name="RouteInterface" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Interface]">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
@@ -392,9 +406,9 @@
                 </xsl:element>
             </xsl:if>
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Destination]">
-                <xsl:element name="RouteDestination" namespace="http://mars-o-matic.com">
+                <xsl:element name="RouteDestination" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Gateway]">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
@@ -406,9 +420,9 @@
                 </xsl:element>
             </xsl:if>
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Gateway]">
-                <xsl:element name="RouteGateway" namespace="http://mars-o-matic.com">
+                <xsl:element name="RouteGateway" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Gateway]">
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
@@ -439,7 +453,7 @@
         <xsl:param name="delimiter"/>
         <xsl:choose>
             <xsl:when test="contains($list, $delimiter)">               
-                <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:attribute name="Content">
                         <xsl:value-of select="substring-before($list,$delimiter)"/>
                     </xsl:attribute>
@@ -456,7 +470,7 @@
                         <xsl:text/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:element name="Value" namespace="http://mars-o-matic.com">
+                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Content">
                                 <xsl:value-of select="$list"/>
                             </xsl:attribute>

@@ -9,7 +9,7 @@
 
   <xs:simpleType name="AutomationStateType">
     <xs:annotation>
-      <xs:documentation>special node attribute telling automation system whether to deal with it normally or not. If no value is specified the value "Automated" is assume which means normal processing.</xs:documentation>
+      <xs:documentation>special node attribute telling automation system whether to deal with it normally or not. If no value is specified the value "Automated" is assumed which means normal processing.</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="Automated" />

@@ -74,6 +74,7 @@ def extract_from_xml(cfg, data_hash):
         data_hash['Application'] = { 'types' : {} ,
                                   'elements' : {} }
         for el_name in el_data.keys():
+            #print "DEBUG", el_data[el_name]
             data_hash[el_data[el_name]["TYPE"]]['elements'][el_name] = \
                 el_data[el_name]
         for ct_name in ct_data.keys():

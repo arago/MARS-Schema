@@ -99,9 +99,10 @@
     <xsl:template match="mars:OSInformation" />
     <xsl:template match="mars:HardwareInformation" />
     <xsl:template match="mars:SoftwareInformation" />
+    <xsl:template match="mars:SoftwareConfiguration" />
     <xsl:template match="mars:LocationInformation" />
+
     <xsl:template match="mars:Dependencies">
-        
         <xsl:element name="Dependencies" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:Node">
                 <xsl:element name="Node" namespace="https://graphit.co/schemas/v2/MARSSchema">

@@ -725,7 +725,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="Backend" />
       <xs:enumeration value="Computation" />
-      <xs:enumeration value="Content" />
+      <xs:enumeration value="ContentDelivery" />
       <xs:enumeration value="CoreApplication" />
       <xs:enumeration value="Database" />
       <xs:enumeration value="Environment" />
@@ -5830,7 +5830,7 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:element name="Content">
+  <xs:element name="ContentDelivery">
     <xs:annotation>
       <xs:documentation xml:lang="de">Lieferung und
       Bereitstellung von Inhalten
@@ -5843,7 +5843,7 @@
       <xs:complexContent>
         <xs:extension base="aae:ResourceAttributes">
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
-                        fixed="Content" />
+                        fixed="ContentDelivery" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

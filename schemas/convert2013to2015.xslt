@@ -117,11 +117,11 @@
     <xsl:template match="mars:Extensions">
         <xsl:element name="MAIDChecks" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:WatchMeConfig/*">
-                <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:attribute name="Key">
                         <xsl:value-of select="name(.)"/>
                     </xsl:attribute>
-                    <xsl:attribute name="Content">{<xsl:for-each select="@*">"<xsl:value-of select="name()" />": "<xsl:value-of select="." />",</xsl:for-each>"ConversionDummy": "Dummy"}</xsl:attribute>
+                    <xsl:attribute name="Value">{<xsl:for-each select="@*">"<xsl:value-of select="name()" />": "<xsl:value-of select="." />",</xsl:for-each>"ConversionDummy": "Dummy"}</xsl:attribute>
                 </xsl:element>
             </xsl:for-each>
         </xsl:element>
@@ -181,8 +181,8 @@
     <xsl:template match="mars:StorageInformation">
         <xsl:element name="Filesystem" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:FileSystemInformation/mars:FileSystem">
-                <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
-                    <xsl:attribute name="Content">
+                <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:attribute name="Value">
                         <xsl:value-of select="@Device" />
                     </xsl:attribute>
                 </xsl:element>
@@ -192,11 +192,11 @@
             <xsl:element name="FilesystemMountpoint" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@MountPoint" />
                             </xsl:attribute>
                         </xsl:element>
@@ -208,11 +208,11 @@
             <xsl:element name="FilesystemMountOptions" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@MountOptions" />
                             </xsl:attribute>
                         </xsl:element>
@@ -224,11 +224,11 @@
             <xsl:element name="FilesystemType" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@Type" />
                             </xsl:attribute>
                         </xsl:element>
@@ -240,11 +240,11 @@
             <xsl:element name="FilesystemSpaceUnit" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@SpaceUnit" />
                             </xsl:attribute>
                         </xsl:element>
@@ -256,11 +256,11 @@
             <xsl:element name="FilesystemSpaceTotal" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:FileSystemInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Device" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@SpaceTotal" />
                             </xsl:attribute>
                         </xsl:element>
@@ -274,8 +274,8 @@
         <xsl:element name="NetworkInterface" namespace="https://graphit.co/schemas/v2/MARSSchema">
             <xsl:for-each select="mars:InterfaceInformation">
                 <xsl:for-each select="*">
-                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
-                        <xsl:attribute name="Content">
+                    <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:attribute name="Value">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
                     </xsl:element>
@@ -286,11 +286,11 @@
         <xsl:if test="mars:InterfaceInformation/*[@MAC]">
             <xsl:element name="NetworkInterfaceMAC" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*[@MAC]">
-                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
-                        <xsl:attribute name="Content">
+                        <xsl:attribute name="Value">
                             <xsl:value-of select="@MAC" />
                         </xsl:attribute>
                     </xsl:element>
@@ -302,17 +302,17 @@
             <xsl:element name="NetworkInterfaceIP" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation">
                     <xsl:for-each select="*">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="@Name" />
                             </xsl:attribute>
                             <xsl:if test="@IP">
-                                <xsl:attribute name="Content">
+                                <xsl:attribute name="Value">
                                     <xsl:value-of select="@IP" />
                                 </xsl:attribute>
                             </xsl:if>
                             <xsl:if test="@IPv6">
-                                <xsl:attribute name="Content">
+                                <xsl:attribute name="Value">
                                     <xsl:value-of select="@IPv6" />
                                 </xsl:attribute>
                             </xsl:if>
@@ -325,11 +325,11 @@
         <xsl:if test="mars:InterfaceInformation/*[@Netmask]">
             <xsl:element name="NetworkInterfaceNetmask" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*[@Netmask]">
-                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
-                        <xsl:attribute name="Content">
+                        <xsl:attribute name="Value">
                             <xsl:value-of select="@Netmask" />
                         </xsl:attribute>
                     </xsl:element>
@@ -340,11 +340,11 @@
         <xsl:if test="mars:InterfaceInformation/*">
             <xsl:element name="NetworkInterfaceType" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*">
-                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
-                        <xsl:attribute name="Content">
+                        <xsl:attribute name="Value">
                             <xsl:value-of select="name(.)" />
                         </xsl:attribute>
                     </xsl:element>
@@ -355,11 +355,11 @@
         <xsl:if test="mars:InterfaceInformation/*[@PrefixLength]">
             <xsl:element name="NetworkInterfacePrefixLength" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:InterfaceInformation/*[@PrefixLength]">
-                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                         <xsl:attribute name="Key">
                             <xsl:value-of select="@Name" />
                         </xsl:attribute>
-                        <xsl:attribute name="Content">
+                        <xsl:attribute name="Value">
                             <xsl:value-of select="@PrefixLength" />
                         </xsl:attribute>
                     </xsl:element>
@@ -370,8 +370,8 @@
         <xsl:if test="mars:RoutingInformation/mars:Routes">
             <xsl:element name="Route" namespace="https://graphit.co/schemas/v2/MARSSchema">
                 <xsl:for-each select="mars:RoutingInformation/mars:Routes">
-                    <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
-                        <xsl:attribute name="Content">
+                    <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:attribute name="Value">
                             <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                         </xsl:attribute>
                     </xsl:element>
@@ -381,11 +381,11 @@
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Netmask]">
                 <xsl:element name="RouteNetmask" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Netmask]">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@Netmask" />
                             </xsl:attribute>
                         </xsl:element>
@@ -395,11 +395,11 @@
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Interface]">
                 <xsl:element name="RouteInterface" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Interface]">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@Interface" />
                             </xsl:attribute>
                         </xsl:element>
@@ -409,11 +409,11 @@
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Destination]">
                 <xsl:element name="RouteDestination" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Gateway]">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@Destination" />
                             </xsl:attribute>
                         </xsl:element>
@@ -423,11 +423,11 @@
             <xsl:if test="mars:RoutingInformation/mars:Routes[@Gateway]">
                 <xsl:element name="RouteGateway" namespace="https://graphit.co/schemas/v2/MARSSchema">
                     <xsl:for-each select="mars:RoutingInformation/mars:Routes[@Gateway]">
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
                             <xsl:attribute name="Key">
                                 <xsl:value-of select="concat(@Destination,':',@Gateway)" />
                             </xsl:attribute>
-                            <xsl:attribute name="Content">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="@Gateway" />
                             </xsl:attribute>
                         </xsl:element>
@@ -454,8 +454,8 @@
         <xsl:param name="delimiter"/>
         <xsl:choose>
             <xsl:when test="contains($list, $delimiter)">               
-                <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
-                    <xsl:attribute name="Content">
+                <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                    <xsl:attribute name="Value">
                         <xsl:value-of select="substring-before($list,$delimiter)"/>
                     </xsl:attribute>
                 </xsl:element>
@@ -471,8 +471,8 @@
                         <xsl:text/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:element name="Value" namespace="https://graphit.co/schemas/v2/MARSSchema">
-                            <xsl:attribute name="Content">
+                        <xsl:element name="Content" namespace="https://graphit.co/schemas/v2/MARSSchema">
+                            <xsl:attribute name="Value">
                                 <xsl:value-of select="$list"/>
                             </xsl:attribute>
                         </xsl:element>

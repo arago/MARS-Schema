@@ -8,7 +8,7 @@
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
   <xs:complexType name="BaseValueType">
-    <xs:attribute name="Content" />
+    <xs:attribute name="Value" />
     <xs:attribute name="Key" use="optional" />
     <!-- technically valid but probably of no use in mars xml
          <xs:attribute name="CreatedOn" use="optional" />
@@ -45,7 +45,7 @@
   <xs:complexType name="AutomationStateValueType">
     <xs:complexContent>
       <xs:restriction base="aae:BaseValueType">
-        <xs:attribute name="Content">
+        <xs:attribute name="Value">
           <xs:simpleType>
             <xs:restriction base="xs:string">
               <xs:enumeration value="Automated" />
@@ -826,23 +826,23 @@
   
   <xs:complexType name="GenericList">
     <xs:sequence>
-      <xs:element name="Value" type="aae:BaseListValueType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="Content" type="aae:BaseListValueType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="GenericMap">
     <xs:sequence>
-      <xs:element name="Value" type="aae:BaseMapValueType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="Content" type="aae:BaseMapValueType" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="Services">
     <xs:sequence>
-      <xs:element name="Value" minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="Content" minOccurs="1" maxOccurs="unbounded">
         <xs:complexType>
           <xs:complexContent>
             <xs:restriction base="aae:BaseValueType">
-              <xs:attribute name="Content">
+              <xs:attribute name="Value">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:pattern value="[a-zA-Z0-9\-+_.]+" />

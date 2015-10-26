@@ -9,7 +9,13 @@
 
   <xs:complexType name="BaseValueType">
     <xs:attribute name="Value" />
-    <xs:attribute name="Key" use="optional" />
+    <xs:attribute name="Key" use="optional" >
+            <xs:annotation>
+                <xs:documentation>
+                    Key for a map entry
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
     <!-- technically valid but probably of no use in mars xml
          <xs:attribute name="CreatedOn" use="optional" />
          <xs:attribute name="MTIME" use="optional" />
@@ -17,17 +23,35 @@
   </xs:complexType>
 
   <xs:complexType name="BaseListValueType">
+    <xs:annotation>
+      <xs:documentation>Basic content type for lists</xs:documentation>
+    </xs:annotation>
     <xs:complexContent>
       <xs:restriction base="aae:BaseValueType">
-        <xs:attribute name="Key" use="prohibited" />
+        <xs:attribute name="Key" use="prohibited" >
+            <xs:annotation>
+                <xs:documentation>
+                    Key for a map entry
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
 
   <xs:complexType name="BaseMapValueType">
+    <xs:annotation>
+      <xs:documentation>Basic content type for maps</xs:documentation>
+    </xs:annotation>
     <xs:complexContent>
       <xs:restriction base="aae:BaseValueType">
-        <xs:attribute name="Key" use="required" />
+        <xs:attribute name="Key" use="required"  >
+            <xs:annotation>
+                <xs:documentation>
+                    Key for a map entry
+                </xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
@@ -91,6 +115,9 @@
   </xs:simpleType>
 
   <xs:simpleType name="customerId">
+    <xs:annotation>
+        <xs:documentation>an id for a customer</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="[a-z0-9\-\._]+" />
     </xs:restriction>
@@ -255,6 +282,9 @@
   </xs:simpleType>
 
   <xs:simpleType name="ClustertypeType">
+    <xs:annotation>
+        <xs:documentation>Type of a cluster (Single, Loadbalanced, Cluster, Hotstandby or Coldstandby)</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="Single" />
       <xs:enumeration value="Loadbalanced" />
@@ -839,6 +869,9 @@
   <xs:complexType name="Services">
     <xs:sequence>
       <xs:element name="Content" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+           <xs:documentation> basic content </xs:documentation>
+        </xs:annotation>
         <xs:complexType>
           <xs:complexContent>
             <xs:restriction base="aae:BaseValueType">
@@ -1068,7 +1101,8 @@
   <xs:complexType name="CommonNodeType">
     <xs:sequence>
       <xs:element name="Dependencies" type="aae:DependenciesType" minOccurs="0" />
-      <xs:element name="MAIDChecks" type="aae:GenericMap" minOccurs="0" />
+      <xs:element name="MAIDChecks" type="aae:GenericMap" minOccurs="0" >
+      </xs:element>
     </xs:sequence>
     <xs:attribute name="ID" type="aae:aaeID" use="required">
       <xs:annotation>
@@ -1091,9 +1125,27 @@
     <xs:attribute name="Clustertype" type="aae:ClustertypeType" />
     <xs:attribute name="NominalState" type="aae:StatusType" />
     <xs:attribute name="MonitoringStatus" type="aae:StatusTypeNumeric" />
-    <xs:attribute name="MonitoringStatusMessage" type="xs:string" />
-    <xs:attribute name="EventCounter.Warning" type="xs:int" />
-    <xs:attribute name="EventCounter.Critical" type="xs:int" />
+    <xs:attribute name="MonitoringStatusMessage" type="xs:string" >
+            <xs:annotation>
+                <xs:documentation>
+                    message for monitoring status
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="EventCounter.Warning" type="xs:int" >
+            <xs:annotation>
+                <xs:documentation>
+                    number of unresolved warning events
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="EventCounter.Critical" type="xs:int" >
+            <xs:annotation>
+                <xs:documentation>
+                    number of unresolved critical events
+                </xs:documentation>
+            </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="CustomerID" type="aae:customerId" use="required" />
     <xs:attribute name="CustomerName" type="aae:ShortString" />
     <xs:attribute name="TechContact" type="aae:email">
@@ -1174,7 +1226,11 @@
             </xs:annotation>
             
           </xs:element>
-          <xs:element name="Route" type="aae:GenericList" minOccurs="0" />
+          <xs:element name="Route" type="aae:GenericList" minOccurs="0" >
+              <xs:annotation>
+                <xs:documentation> list of route destinations and route ips (colon separated) </xs:documentation>
+              </xs:annotation>
+          </xs:element>
           <xs:element name="RouteNetmask" type="aae:GenericMap" minOccurs="0">
             <xs:annotation>
               <xs:documentation>netmask address of interface (e.g. 255.255.255.0), key must be interface name
@@ -1183,21 +1239,59 @@
           </xs:element>
           
           <xs:element name="Route" type="aae:GenericList" minOccurs="0"/>
-          <xs:element name="RouteInterface" type="aae:GenericMap" minOccurs="0"/>
+          <xs:element name="RouteInterface" type="aae:GenericMap" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation> inteface of route </xs:documentation>
+              </xs:annotation>
+          </xs:element>
           <xs:element name="RouteDestination" type="aae:GenericMap" minOccurs="0"/>
-          <xs:element name="RouteGateway" type="aae:GenericMap" minOccurs="0"/>
+          <xs:element name="RouteGateway" type="aae:GenericMap" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation> gateway of route </xs:documentation>
+              </xs:annotation>
+          </xs:element>
           
-          <xs:element name="Filesystem" type="aae:GenericList" minOccurs="0"/>
-          <xs:element name="FilesystemMountPoint" type="aae:GenericMap" minOccurs="0"/>
-          <xs:element name="FilesystemMountOptions" type="aae:GenericMap" minOccurs="0" />
-          <xs:element name="FilesystemType" type="aae:GenericMap" minOccurs="0"/>
+          <xs:element name="Filesystem" type="aae:GenericList" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                list of device identifiers
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FilesystemMountPoint" type="aae:GenericMap" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                mount point of filesystem
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FilesystemMountOptions" type="aae:GenericMap" minOccurs="0" >
+            <xs:annotation>
+              <xs:documentation>
+                mount options of filesystem
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FilesystemType" type="aae:GenericMap" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                type of filesystem
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:element name="FilesystemSpaceUnit" type="aae:GenericMap" minOccurs="0">
             <xs:annotation>
               <xs:documentation>k, M, G, T, ..., key must be device name
               </xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="FilesystemSpaceTotal" type="aae:GenericMap" minOccurs="0"/>
+          <xs:element name="FilesystemSpaceTotal" type="aae:GenericMap" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>
+                total space of filesystem
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
           <xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax" />
         </xs:sequence>
         <xs:attribute name="NodeType" type="aae:NodeType" fixed="Machine" use="required">

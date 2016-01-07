@@ -457,6 +457,7 @@
       <xs:enumeration value="BlueCoatProxyAV" />
       <xs:enumeration value="BlueCoatProxySG" />
       <xs:enumeration value="Bluefish" />
+      <xs:enumeration value="BMC" />
       <xs:enumeration value="BMCPerformanceManager" />
       <xs:enumeration value="BMCPatrolAgent" />
       <xs:enumeration value="BPEL" />
@@ -538,6 +539,7 @@
       <xs:enumeration value="HiQube" />
       <xs:enumeration value="Hypertable" />
       <xs:enumeration value="HyperV" />
+      <xs:enumeration value="HPAdministration" />
       <xs:enumeration value="HPOpenView" />
       <xs:enumeration value="HSQLDB" />
       <xs:enumeration value="htdig" />
@@ -673,6 +675,7 @@
       <xs:enumeration value="StingrayTrafficManager" />
       <xs:enumeration value="ServiceDeskExpress" />
       <xs:enumeration value="ServiceMix" />
+      <xs:enumeration value="ServiceNow" />
       <xs:enumeration value="SiebelCRM" />
       <xs:enumeration value="SilverStripeCMS" />
       <xs:enumeration value="SimpleDB" />
@@ -5218,6 +5221,36 @@
         <xs:extension base="aae:AdministrationAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Tivoli" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceNow">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="ServiceNow" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BMC">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="BMC" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HPAdministration">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AdministrationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="HPAdministration" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

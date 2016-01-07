@@ -42,7 +42,7 @@ my $xml_text = << "EOF";
 EOF
 
 my $xml_text_v2 = << "EOF";
-<$subclass xmlns="http://mars-o-matic.com/v2"
+<$subclass xmlns="https://graphit.co/schemas/v2/MARSSchema"
 	ID="Test:UnitTests:Software:software1"
 	SoftwareClass="$class"
 	SoftwareSubClass="$subclass"

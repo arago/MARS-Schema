@@ -371,6 +371,9 @@
       <xs:enumeration value="UNIX" />
       <xs:enumeration value="Windows" />
       <xs:enumeration value="BSD" />
+      <xs:enumeration value="Router" />
+      <xs:enumeration value="Switch" />
+      <xs:enumeration value="Wifi" />
     </xs:restriction>
   </xs:simpleType>
 
@@ -1867,6 +1870,74 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="Router">
+    <xs:annotation>
+      <xs:documentation xml:lang="de">Router oder Netzwerkrouter sind 
+      Netzwerkgeräte, die Netzwerkpakete zwischen mehreren Rechnernetzen 
+      weiterleiten können.
+      </xs:documentation>
+      <xs:documentation xml:lang="en">A router is a networking device 
+      that forwards data packets between computer networks.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MachineAttributes">
+          <xs:attribute use="required" name="MachineClass" type="aae:MachineClass"
+                        fixed="Router" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="Switch">
+    <xs:annotation>
+      <xs:documentation xml:lang="de">In Computer-Netzwerken wird als Switch 
+      auch Netzwerkweiche oder Verteiler genannt – ein Kopplungselement bezeichnet, 
+      das Netzwerksegmente miteinander verbindet.
+      </xs:documentation>
+      <xs:documentation xml:lang="en">A network switch (also called switching hub, 
+      bridging hub, officially MAC bridge) is a computer networking device that 
+      connects devices together on a computer network, by using packet switching to receive, 
+      process and forward data to the destination device.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MachineAttributes">
+          <xs:attribute use="required" name="MachineClass" type="aae:MachineClass"
+                        fixed="Switch" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="WiFi">
+    <xs:annotation>
+      <xs:documentation xml:lang="de">Oft wird Wi-Fi als Synonym für WLAN benutzt. 
+      Streng genommen sind WLAN und Wi-Fi jedoch nicht das Gleiche, WLAN bezeichnet 
+      das Funknetzwerk, Wi-Fi hingegen die Zertifizierung durch die WiFi-Alliance 
+      anhand der IEEE-Standards für WLAN. Alle Wi-Fi-zertifizierten Produkte sind 
+      somit WLAN-Standard-konform, sodass sie in der Regel als Synonyme gebraucht werden.
+      </xs:documentation>
+      <xs:documentation xml:lang="en">The Wi-Fi Alliance defines Wi-Fi as any 
+      "wireless local area network" (WLAN) product based on the 
+      Institute of Electrical and Electronics Engineers' (IEEE) 802.11 standards. 
+      However, the term "Wi-Fi" is used in general English as a synonym for "WLAN" 
+      since most modern WLANs are based on these standards. "Wi-Fi" is a trademark 
+      of the Wi-Fi Alliance. The "Wi-Fi Certified" trademark can only be used by Wi-Fi 
+      products that successfully complete Wi-Fi Alliance interoperability certification testing.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MachineAttributes">
+          <xs:attribute use="required" name="MachineClass" type="aae:MachineClass"
+                        fixed="WiFi" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <!-- Software Classes -->
 
   <xs:complexType name="AdministrationAttributes">

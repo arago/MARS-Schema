@@ -373,7 +373,7 @@
       <xs:enumeration value="BSD" />
       <xs:enumeration value="Router" />
       <xs:enumeration value="Switch" />
-      <xs:enumeration value="Wifi" />
+      <xs:enumeration value="WiFi" />
     </xs:restriction>
   </xs:simpleType>
 

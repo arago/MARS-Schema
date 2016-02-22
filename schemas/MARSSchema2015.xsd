@@ -66,22 +66,6 @@
     </xs:restriction>
   </xs:simpleType>
   
-  <xs:complexType name="AutomationStateValueType">
-    <xs:complexContent>
-      <xs:restriction base="aae:BaseValueType">
-        <xs:attribute name="Value">
-          <xs:simpleType>
-            <xs:restriction base="xs:string">
-              <xs:enumeration value="Automated" />
-              <xs:enumeration value="Manual" />
-            </xs:restriction>
-          </xs:simpleType>
-        </xs:attribute>
-        <xs:attribute name="Key" use="prohibited"/>
-      </xs:restriction>
-    </xs:complexContent>
-  </xs:complexType>
-
   <xs:simpleType name="ShortString">
     <xs:annotation>
       <xs:documentation>a name</xs:documentation>

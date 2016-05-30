@@ -1227,8 +1227,6 @@
               </xs:documentation>
             </xs:annotation>
           </xs:element>
-          
-          <xs:element name="Route" type="aae:GenericList" minOccurs="0"/>
           <xs:element name="RouteInterface" type="aae:GenericMap" minOccurs="0">
               <xs:annotation>
                 <xs:documentation> inteface of route </xs:documentation>

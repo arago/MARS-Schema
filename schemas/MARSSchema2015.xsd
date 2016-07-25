@@ -1619,13 +1619,12 @@
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
-        <!-- we have NetworkPort twice... probably stupid to begin with
-             <xs:attribute name="NetworkPort" type="aae:Port" use="required">
-             <xs:annotation>
-             <xs:documentation>the ip port</xs:documentation>
-             </xs:annotation>
-             </xs:attribute>
-        -->
+        <xs:attribute name="DockerContainerName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>name of docker container
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

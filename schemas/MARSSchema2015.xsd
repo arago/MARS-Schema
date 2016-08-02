@@ -641,6 +641,7 @@
       <xs:enumeration value="RabbitMQ" />
       <xs:enumeration value="RedDotCMS" />
       <xs:enumeration value="RedFoxCrypto" />
+      <xs:enumeration value="Redis" />
       <xs:enumeration value="RedPrairie" />
       <xs:enumeration value="Refworks" />
       <xs:enumeration value="RemedyARS" />
@@ -4840,6 +4841,19 @@
         <xs:extension base="aae:IAMAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="RedFoxCrypto" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Redis">
+    <xs:annotation>
+      <xs:documentation>Redis is a data structure server. It is open-source, networked, in-memory, and stores keys with optional durability</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Redis" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

@@ -1625,6 +1625,12 @@
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="ServiceName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>name of systemd service
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>

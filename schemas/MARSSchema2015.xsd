@@ -1579,6 +1579,18 @@
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="StopScript" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>path of the software stopscript
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="DockerContainerName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>name of docker container
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="ConfigFile" type="xs:string">
           <xs:annotation>
             <xs:documentation>path of the software config file

@@ -1299,6 +1299,11 @@
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="MachineArchitecture" type="aae:MachineArchitecture"/>
+        <xs:attribute name="FQDN" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>fully qualified domain name</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="OSVendor" type="aae:ShortString">
           <xs:annotation>
             <xs:documentation>vendor of operating system</xs:documentation>

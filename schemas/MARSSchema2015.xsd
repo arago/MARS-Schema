@@ -398,6 +398,7 @@
       <xs:enumeration value="Proxy" />
       <xs:enumeration value="QueueAndCache" />
       <xs:enumeration value="Reference" />
+      <xs:enumeration value="Reporting" />
       <xs:enumeration value="RTE" />
       <xs:enumeration value="SearchEngines" />
       <xs:enumeration value="SupplyChainManagement" />
@@ -622,6 +623,7 @@
       <xs:enumeration value="Orion" />
       <xs:enumeration value="Oxwall" />
       <xs:enumeration value="Perl" />
+      <xs:enumeration value="PentahoReporting" />
       <xs:enumeration value="PHP-FPM" />
       <xs:enumeration value="Planalyzer" />
       <xs:enumeration value="PlanPlusOnline" />
@@ -2570,6 +2572,20 @@
     </xs:complexContent>
   </xs:complexType>
 
+  <xs:complexType name="ReportingAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" 
+                      type="aae:SoftwareClass" fixed="Reporting">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">any kind of reporting tools/software
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
   <xs:complexType name="RTEAttributes">
     <xs:complexContent>
       <xs:extension base="aae:SoftwareAttributes">
@@ -2771,6 +2787,9 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ADS">
+    <xs:annotation>
+      <xs:documentation>Microsoft's Active Directory Services</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:IAMAttributes">
@@ -5805,6 +5824,21 @@
         <xs:extension base="aae:DNSServerAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="bind" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- SoftwareClass=Reporting -->
+  <xs:element name="PentahoReporting">
+    <xs:annotation>
+      <xs:documentation>http://community.pentaho.com/projects/reporting/</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:RTEAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="PentahoReporting" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

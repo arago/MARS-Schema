@@ -667,7 +667,6 @@
       <xs:enumeration value="SiebelCRM" />
       <xs:enumeration value="SilverStripeCMS" />
       <xs:enumeration value="SimpleDB" />
-      <xs:enumeration value="Smail" />
       <xs:enumeration value="SophosAntiVirus" />
       <xs:enumeration value="SugarCRM" />
       <xs:enumeration value="SummusITMS" />

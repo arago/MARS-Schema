@@ -525,6 +525,8 @@
       <xs:enumeration value="GuardusMES" />
       <xs:enumeration value="Hadoop" />
       <xs:enumeration value="HiQube" />
+      <xs:enumeration value="HIROEngine" />
+      <xs:enumeration value="HIROGraphDB" />
       <xs:enumeration value="Hypertable" />
       <xs:enumeration value="HyperV" />
       <xs:enumeration value="HPAdministration" />
@@ -3757,11 +3759,27 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="GraphIT">
+    <xs:annotation>
+      <xs:documentation>arago GraphIT server (https://docs.hiro.arago.co/autopilot)</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="GraphIT" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HIROGraphDB">
+    <xs:annotation>
+      <xs:documentation>arago HIRO Graph DB (https://docs.hiro.arago.co). Formerly known as arago GraphIT server</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DataProcessingAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="HIROGraphDB" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -5892,11 +5910,27 @@
 
   <!-- SoftwareClass=Automation -->
   <xs:element name="AutoPilot">
+    <xs:annotation>
+      <xs:documentation>arago AutoPilot engine (https://docs.hiro.arago.co/autopilot)</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AutomationAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="AutoPilot" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HIROEngine">
+    <xs:annotation>
+      <xs:documentation>arago HIRO Engine (https://docs.hiro.arago.co). Formerly known as arago AutoPilot engine</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:AutomationAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="HIROEngine" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

@@ -1330,6 +1330,11 @@
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="OSKernel" type="aae:ShortString">
+          <xs:annotation>
+            <xs:documentation>kernel version</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="OSLang" type="aae:ShortString">
           <xs:annotation>
             <xs:documentation>operating system language</xs:documentation>

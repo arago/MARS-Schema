@@ -3,7 +3,7 @@
            targetNamespace="https://graphit.co/schemas/v2/MARSSchema" 
            xmlns:aae="https://graphit.co/schemas/v2/MARSSchema"
            elementFormDefault="qualified"
-           version="5.3.4" >
+           version="5.3.5" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -492,6 +492,7 @@
       <xs:enumeration value="Educational" />
       <xs:enumeration value="Ektron" />
       <xs:enumeration value="ElastiCache" />
+      <xs:enumeration value="Elasticsearch" />
       <xs:enumeration value="elgg" />
       <xs:enumeration value="Empress" />
       <xs:enumeration value="Entertainment" />
@@ -503,6 +504,7 @@
       <xs:enumeration value="ExpressionEngine" />
       <xs:enumeration value="FactoryManagement" />
       <xs:enumeration value="FieldOne" />
+      <xs:enumeration value="Flink" />
       <xs:enumeration value="FlowSoftware" />
       <xs:enumeration value="FortiAnalyzer" />
       <xs:enumeration value="Fortigate" />
@@ -525,6 +527,7 @@
       <xs:enumeration value="GuardusMES" />
       <xs:enumeration value="Hadoop" />
       <xs:enumeration value="HiQube" />
+      <xs:enumeration value="HIROConnect" />
       <xs:enumeration value="HIROEngine" />
       <xs:enumeration value="HIROGraphDB" />
       <xs:enumeration value="Hypertable" />
@@ -551,6 +554,7 @@
       <xs:enumeration value="JOSSO2" />
       <xs:enumeration value="jRun" />
       <xs:enumeration value="JRE" />
+      <xs:enumeration value="Kafka" />
       <xs:enumeration value="KPIMonitor" />
       <xs:enumeration value="KVM" />
       <xs:enumeration value="lighttpd" />
@@ -586,6 +590,7 @@
       <xs:enumeration value="MXEmailDefense" />
       <xs:enumeration value="MaximizerCRM" />
       <xs:enumeration value="Mitto" />
+      <xs:enumeration value="MongoDB" />
       <xs:enumeration value="MySQL" />
       <xs:enumeration value="NFS" />
       <xs:enumeration value="Nagios" />
@@ -624,6 +629,7 @@
       <xs:enumeration value="OracleWebCache" />
       <xs:enumeration value="Orion" />
       <xs:enumeration value="Oxwall" />
+      <xs:enumeration value="PasswordManagerPro" />
       <xs:enumeration value="Perl" />
       <xs:enumeration value="PentahoReporting" />
       <xs:enumeration value="PHP-FPM" />
@@ -3776,6 +3782,19 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Flink">
+    <xs:annotation>
+      <xs:documentation>Apache Flink is an open-source stream processing framework for distributed, high-performing, always-available, and accurate data streaming applications. (https://flink.apache.org/)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DataProcessingAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="Flink" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="HIROGraphDB">
     <xs:annotation>
       <xs:documentation>arago HIRO Graph DB (https://docs.hiro.arago.co). Formerly known as arago GraphIT server</xs:documentation>
@@ -3790,6 +3809,9 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="Hadoop">
+    <xs:annotation>
+      <xs:documentation>Apache Hadoop is an open-source software framework used for distributed storage and processing of very large data sets.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
@@ -4157,6 +4179,19 @@
         <xs:extension base="aae:SearchEnginesAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Lucene" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Elasticsearch">
+    <xs:annotation>
+      <xs:documentation>Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:SearchEnginesAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Elasticsearch" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -4674,6 +4709,9 @@
     </xs:complexType>
   </xs:element>	
   <xs:element name="Cassandra">
+    <xs:annotation>
+      <xs:documentation>Apache Cassandra is a free and open-source distributed database management system designed to handle large amounts of data across many commodity servers, providing high availability with no single point of failure.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DBMSAttributes">
@@ -4683,6 +4721,19 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>	
+  <xs:element name="MongoDB">
+    <xs:annotation>
+      <xs:documentation>MongoDB (from humongous) is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DBMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="MongoDB" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="MySQL">
     <xs:complexType>
       <xs:complexContent>
@@ -4694,6 +4745,9 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="Zookeeper">
+    <xs:annotation>
+      <xs:documentation>Apache ZooKeeper is a software project of the Apache Software Foundation. It is essentially a distributed hierarchical key-value store, which is used to provide a distributed configuration service, synchronization service, and naming registry for large distributed systems.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DBMSAttributes">
@@ -4753,6 +4807,19 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="PasswordManagerPro">
+    <xs:annotation>
+      <xs:documentation>Password Manager Pro is a secure vault for storing and managing shared sensitive information such as passwords, documents and digital identities of enterprises.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="PasswordManagerPro" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>  
   <xs:element name="PowerVM">
     <xs:complexType>
       <xs:complexContent>
@@ -4859,6 +4926,19 @@
         <xs:extension base="aae:QueueAndCacheAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="RabbitMQ" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Kafka">
+    <xs:annotation>
+      <xs:documentation>Kafka is a distributed streaming platform (https://kafka.apache.org)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:QueueAndCacheAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="Kafka" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
@@ -5923,6 +6003,19 @@
         <xs:extension base="aae:AutomationAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" 
 			type="aae:SoftwareSubClass" fixed="AutoPilot" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HIROConnect">
+    <xs:annotation>
+      <xs:documentation>arago HIRO Connect (https://docs.hiro.arago.co)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:DataProcessingAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" 
+			type="aae:SoftwareSubClass" fixed="HIROConnect" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

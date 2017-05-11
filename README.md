@@ -11,15 +11,12 @@ The MARS model builds upon four basic types of objects with a single type of rel
 
 MARS is a wordplay with the initial letters of the four basis object types contained: **M**achine, **A**pplication, **R**esource and **S**oftware 
 
-# What is MARS used for?
-
-MARS is currently incorporated in two different products, which are the [arago Autopilot for IT Operations](https://www.autopilot.co) and [MARS-o-matic](http://www.marsomatic.com), which is an iPad App for modelling and benchmarking IT environment. Because MARS is based on an open XML format it is easy to implement and data stored in the MARS format could easily integrated into other software/services.
 
 # How can I contribute?
 
 See our [MARS Contribution Document](CONTRIBUTING.md) for more details on submitting suggestions and starting discussions about MARS.
 
-If you have general questions or need support please contact us at <mars@arago.de>
+If you have general questions or need support please visit our community https://hiro.community.
 
 # Download
 

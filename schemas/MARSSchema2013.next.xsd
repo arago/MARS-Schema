@@ -354,6 +354,7 @@
       <xs:documentation>software subclasses</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
+      <xs:enumeration value="389DirectoryServer" />
       <xs:enumeration value="A10ADC" />
       <xs:enumeration value="AbacaEPG" />
       <xs:enumeration value="Abas" />
@@ -2999,6 +3000,16 @@ The BSD MachineClass is used to cover the following descendants of the original 
   </xs:complexType>
 
   <!-- Software Node elements -->
+  <xs:element name="389DirectoryServer">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:IAMAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="389DirectoryServer" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="A10ADC">
     <xs:complexType>
       <xs:complexContent>

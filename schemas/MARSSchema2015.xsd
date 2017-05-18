@@ -3,7 +3,7 @@
            targetNamespace="https://graphit.co/schemas/v2/MARSSchema" 
            xmlns:aae="https://graphit.co/schemas/v2/MARSSchema"
            elementFormDefault="qualified"
-           version="5.3.5" >
+           version="5.3.6" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -499,6 +499,7 @@
       <xs:enumeration value="EnterpriseIQ" />
       <xs:enumeration value="Epicor" />
       <xs:enumeration value="EpicorERP" />
+      <xs:enumeration value="ExchangeServer" />
       <xs:enumeration value="Equalizer" />
       <xs:enumeration value="eTrustAS" />
       <xs:enumeration value="ExpressionEngine" />
@@ -3555,6 +3556,19 @@
         <xs:extension base="aae:EAIAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="ESB" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExchangeServer">
+    <xs:annotation>
+      <xs:documentation>Microsoft Exchange Server is a mail server and calendaring server developed by Microsoft.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:MailServerAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="ExchangeServer" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

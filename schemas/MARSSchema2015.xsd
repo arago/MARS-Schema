@@ -537,6 +537,7 @@
       <xs:enumeration value="HPOpenView" />
       <xs:enumeration value="HSQLDB" />
       <xs:enumeration value="htdig" />
+      <xs:enumeration value="IBMDomino" />
       <xs:enumeration value="IDSCNetwise" />
       <xs:enumeration value="IIS" />
       <xs:enumeration value="IndividualApplication" />
@@ -3917,6 +3918,19 @@
         <xs:extension base="aae:ProductivityAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="LotusSymphony" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IBMDomino">
+    <xs:annotation>
+      <xs:documentation>IBM Domino (formerly IBM Lotus Domino) is an advanced platform for hosting social business applications. It delivers scalable, security-rich applications at a low cost, helping you improve productivity, accelerate operations and enhance decision-making.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:ProductivityAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="IBMDomino" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

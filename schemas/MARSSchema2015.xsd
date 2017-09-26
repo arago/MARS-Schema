@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://graphit.co/schemas/v2/MARSSchema" 
+           targetNamespace="https://graphit.co/schemas/v2/MARSSchema"
            xmlns:aae="https://graphit.co/schemas/v2/MARSSchema"
            elementFormDefault="qualified"
            version="5.3.7" >
@@ -65,7 +65,7 @@
       <xs:enumeration value="Manual" />
     </xs:restriction>
   </xs:simpleType>
-  
+
   <xs:simpleType name="ShortString">
     <xs:annotation>
       <xs:documentation>a name</xs:documentation>
@@ -858,7 +858,7 @@
   <!-- Model Type Definitions -->
 
   <!-- Attribute Definitions -->
-  
+
   <xs:complexType name="GenericList">
     <xs:sequence>
       <xs:element name="Content" type="aae:BaseListValueType" minOccurs="1" maxOccurs="unbounded" />
@@ -1102,7 +1102,7 @@
       </xs:restriction>
     </xs:complexContent>
   </xs:complexType>
-  
+
   <xs:complexType name="CommonNodeType">
     <xs:sequence>
       <xs:element name="Dependencies" type="aae:DependenciesType" minOccurs="0" />
@@ -1229,7 +1229,7 @@
             <xs:annotation>
               <xs:documentation>The prefix length of an IPv6 address (determines host/networ part), key must be interface name</xs:documentation>
             </xs:annotation>
-            
+
           </xs:element>
           <xs:element name="Route" type="aae:GenericList" minOccurs="0" >
               <xs:annotation>
@@ -1253,7 +1253,7 @@
                 <xs:documentation> gateway of route </xs:documentation>
               </xs:annotation>
           </xs:element>
-          
+
           <xs:element name="Filesystem" type="aae:GenericList" minOccurs="0">
             <xs:annotation>
               <xs:documentation>
@@ -1709,7 +1709,7 @@
           </xs:annotation>
         </xs:attribute>
       </xs:extension>
-    </xs:complexContent>  
+    </xs:complexContent>
   </xs:complexType>
 
   <!-- Machine Node elements -->
@@ -1733,7 +1733,7 @@
                         fixed="AIX" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1757,7 +1757,7 @@
                         fixed="Appliance" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1779,7 +1779,7 @@
                         fixed="HPUX" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1801,7 +1801,7 @@
                         fixed="Linux" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1818,7 +1818,7 @@
                         fixed="BSD" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1841,7 +1841,7 @@
                         fixed="Solaris" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1863,7 +1863,7 @@
                         fixed="UNIX" />
         </xs:extension>
       </xs:complexContent>
-      
+
     </xs:complexType>
   </xs:element>
 
@@ -1890,11 +1890,11 @@
 
   <xs:element name="Router">
     <xs:annotation>
-      <xs:documentation xml:lang="de">Router oder Netzwerkrouter sind 
-      Netzwerkgeräte, die Netzwerkpakete zwischen mehreren Rechnernetzen 
+      <xs:documentation xml:lang="de">Router oder Netzwerkrouter sind
+      Netzwerkgeräte, die Netzwerkpakete zwischen mehreren Rechnernetzen
       weiterleiten können.
       </xs:documentation>
-      <xs:documentation xml:lang="en">A router is a networking device 
+      <xs:documentation xml:lang="en">A router is a networking device
       that forwards data packets between computer networks.
       </xs:documentation>
     </xs:annotation>
@@ -1907,16 +1907,16 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:element name="Switch">
     <xs:annotation>
-      <xs:documentation xml:lang="de">In Computer-Netzwerken wird als Switch 
-      auch Netzwerkweiche oder Verteiler genannt – ein Kopplungselement bezeichnet, 
+      <xs:documentation xml:lang="de">In Computer-Netzwerken wird als Switch
+      auch Netzwerkweiche oder Verteiler genannt – ein Kopplungselement bezeichnet,
       das Netzwerksegmente miteinander verbindet.
       </xs:documentation>
-      <xs:documentation xml:lang="en">A network switch (also called switching hub, 
-      bridging hub, officially MAC bridge) is a computer networking device that 
-      connects devices together on a computer network, by using packet switching to receive, 
+      <xs:documentation xml:lang="en">A network switch (also called switching hub,
+      bridging hub, officially MAC bridge) is a computer networking device that
+      connects devices together on a computer network, by using packet switching to receive,
       process and forward data to the destination device.
       </xs:documentation>
     </xs:annotation>
@@ -1929,21 +1929,21 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
-  
+
   <xs:element name="WiFi">
     <xs:annotation>
-      <xs:documentation xml:lang="de">Oft wird Wi-Fi als Synonym für WLAN benutzt. 
-      Streng genommen sind WLAN und Wi-Fi jedoch nicht das Gleiche, WLAN bezeichnet 
-      das Funknetzwerk, Wi-Fi hingegen die Zertifizierung durch die WiFi-Alliance 
-      anhand der IEEE-Standards für WLAN. Alle Wi-Fi-zertifizierten Produkte sind 
+      <xs:documentation xml:lang="de">Oft wird Wi-Fi als Synonym für WLAN benutzt.
+      Streng genommen sind WLAN und Wi-Fi jedoch nicht das Gleiche, WLAN bezeichnet
+      das Funknetzwerk, Wi-Fi hingegen die Zertifizierung durch die WiFi-Alliance
+      anhand der IEEE-Standards für WLAN. Alle Wi-Fi-zertifizierten Produkte sind
       somit WLAN-Standard-konform, sodass sie in der Regel als Synonyme gebraucht werden.
       </xs:documentation>
-      <xs:documentation xml:lang="en">The Wi-Fi Alliance defines Wi-Fi as any 
-      "wireless local area network" (WLAN) product based on the 
-      Institute of Electrical and Electronics Engineers' (IEEE) 802.11 standards. 
-      However, the term "Wi-Fi" is used in general English as a synonym for "WLAN" 
-      since most modern WLANs are based on these standards. "Wi-Fi" is a trademark 
-      of the Wi-Fi Alliance. The "Wi-Fi Certified" trademark can only be used by Wi-Fi 
+      <xs:documentation xml:lang="en">The Wi-Fi Alliance defines Wi-Fi as any
+      "wireless local area network" (WLAN) product based on the
+      Institute of Electrical and Electronics Engineers' (IEEE) 802.11 standards.
+      However, the term "Wi-Fi" is used in general English as a synonym for "WLAN"
+      since most modern WLANs are based on these standards. "Wi-Fi" is a trademark
+      of the Wi-Fi Alliance. The "Wi-Fi Certified" trademark can only be used by Wi-Fi
       products that successfully complete Wi-Fi Alliance interoperability certification testing.
       </xs:documentation>
     </xs:annotation>
@@ -2221,7 +2221,7 @@
         <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
                       fixed="DNSServer">
           <xs:annotation>
-            <xs:documentation xml:lang="en">domain name service software and its configuration 
+            <xs:documentation xml:lang="en">domain name service software and its configuration
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -2604,7 +2604,7 @@
   <xs:complexType name="ReportingAttributes">
     <xs:complexContent>
       <xs:extension base="aae:SoftwareAttributes">
-        <xs:attribute use="required" name="SoftwareClass" 
+        <xs:attribute use="required" name="SoftwareClass"
                       type="aae:SoftwareClass" fixed="Reporting">
           <xs:annotation>
             <xs:documentation xml:lang="en">any kind of reporting tools/software
@@ -2618,7 +2618,7 @@
   <xs:complexType name="RTEAttributes">
     <xs:complexContent>
       <xs:extension base="aae:SoftwareAttributes">
-        <xs:attribute use="required" name="SoftwareClass" 
+        <xs:attribute use="required" name="SoftwareClass"
                       type="aae:SoftwareClass" fixed="RTE">
           <xs:annotation>
             <xs:documentation xml:lang="en">any run time environment: java RTE, perl, python, ...
@@ -3087,7 +3087,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="BlueCoatProxySG">
     <xs:complexType>
       <xs:complexContent>
@@ -3207,7 +3207,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="ThreePlink">
     <xs:complexType>
       <xs:complexContent>
@@ -3327,7 +3327,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="ColdFusion">
     <xs:complexType>
       <xs:complexContent>
@@ -3726,7 +3726,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="GenevaBMS">
     <xs:complexType>
       <xs:complexContent>
@@ -3776,7 +3776,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="GoogleDocs">
     <xs:complexType>
       <xs:complexContent>
@@ -3824,7 +3824,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="GraphIT" />
         </xs:extension>
       </xs:complexContent>
@@ -3837,7 +3837,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="Flink" />
         </xs:extension>
       </xs:complexContent>
@@ -3850,7 +3850,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="HIROGraphDB" />
         </xs:extension>
       </xs:complexContent>
@@ -3863,7 +3863,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="Hadoop" />
         </xs:extension>
       </xs:complexContent>
@@ -4133,7 +4133,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="JOnAS">
     <xs:complexType>
       <xs:complexContent>
@@ -4153,7 +4153,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Jive">
     <xs:complexType>
       <xs:complexContent>
@@ -4485,7 +4485,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>		
+  </xs:element>
   <xs:element name="SFTP">
     <xs:complexType>
       <xs:complexContent>
@@ -4495,7 +4495,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="NFS">
     <xs:complexType>
       <xs:complexContent>
@@ -4678,7 +4678,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="OracleBIS">
     <xs:complexType>
       <xs:complexContent>
@@ -4698,7 +4698,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="BPEL">
     <xs:complexType>
       <xs:complexContent>
@@ -4771,7 +4771,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Hypertable">
     <xs:complexType>
       <xs:complexContent>
@@ -4781,7 +4781,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Cassandra">
     <xs:annotation>
       <xs:documentation>Apache Cassandra is a free and open-source distributed database management system designed to handle large amounts of data across many commodity servers, providing high availability with no single point of failure.</xs:documentation>
@@ -4794,7 +4794,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="MongoDB">
     <xs:annotation>
       <xs:documentation>MongoDB (from humongous) is a free and open-source cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas.</xs:documentation>
@@ -4893,7 +4893,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>  
+  </xs:element>
   <xs:element name="PowerVM">
     <xs:complexType>
       <xs:complexContent>
@@ -5046,7 +5046,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element> 
+  </xs:element>
   <xs:element name="RedFoxCrypto">
     <xs:complexType>
       <xs:complexContent>
@@ -5199,7 +5199,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Samba">
     <xs:complexType>
       <xs:complexContent>
@@ -5312,7 +5312,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Solr">
     <xs:complexType>
       <xs:complexContent>
@@ -5615,7 +5615,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>			
+  </xs:element>
   <xs:element name="MSRDP">
     <xs:complexType>
       <xs:complexContent>
@@ -5625,7 +5625,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Proteus">
     <xs:complexType>
       <xs:complexContent>
@@ -5635,7 +5635,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="VisionFM">
     <xs:complexType>
       <xs:complexContent>
@@ -5708,7 +5708,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="Tomcat">
     <xs:complexType>
       <xs:complexContent>
@@ -5828,7 +5828,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="zVM">
     <xs:complexType>
       <xs:complexContent>
@@ -5868,7 +5868,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>	
+  </xs:element>
   <xs:element name="EAS">
     <xs:complexType>
       <xs:complexContent>
@@ -5888,7 +5888,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>		
+  </xs:element>
   <xs:element name="GusOsSuite">
     <xs:complexType>
       <xs:complexContent>
@@ -5898,7 +5898,7 @@
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>
-  </xs:element>		
+  </xs:element>
   <xs:element name="RedDotCMS">
     <xs:complexType>
       <xs:complexContent>
@@ -5961,7 +5961,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:SystemServiceAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="Crond" />
         </xs:extension>
       </xs:complexContent>
@@ -5971,7 +5971,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:SystemServiceAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="Telnetd" />
         </xs:extension>
       </xs:complexContent>
@@ -5981,7 +5981,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:SystemServiceAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="SSHD" />
         </xs:extension>
       </xs:complexContent>
@@ -5993,7 +5993,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DNSServerAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="bind" />
         </xs:extension>
       </xs:complexContent>
@@ -6008,7 +6008,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:ReportingAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="PentahoReporting" />
         </xs:extension>
       </xs:complexContent>
@@ -6020,7 +6020,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:RTEAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="JDK" />
         </xs:extension>
       </xs:complexContent>
@@ -6030,7 +6030,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:RTEAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="JRE" />
         </xs:extension>
       </xs:complexContent>
@@ -6040,7 +6040,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:RTEAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="Perl" />
         </xs:extension>
       </xs:complexContent>
@@ -6050,7 +6050,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:RTEAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="PHP-FPM" />
         </xs:extension>
       </xs:complexContent>
@@ -6060,7 +6060,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:RTEAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="Python" />
         </xs:extension>
       </xs:complexContent>
@@ -6075,7 +6075,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AutomationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="AutoPilot" />
         </xs:extension>
       </xs:complexContent>
@@ -6088,7 +6088,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DataProcessingAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="HIROConnect" />
         </xs:extension>
       </xs:complexContent>
@@ -6101,7 +6101,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AutomationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="HIROEngine" />
         </xs:extension>
       </xs:complexContent>
@@ -6113,7 +6113,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:WebServerAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="OracleFusionHTTPServer" />
         </xs:extension>
       </xs:complexContent>
@@ -6123,7 +6123,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:BusinessIntelligenceAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="OracleDiscoverer" />
         </xs:extension>
       </xs:complexContent>
@@ -6133,7 +6133,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:ProxyAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="OracleWebCache" />
         </xs:extension>
       </xs:complexContent>
@@ -6143,7 +6143,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:BusinessIntelligenceAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="OracleReports" />
         </xs:extension>
       </xs:complexContent>
@@ -6153,7 +6153,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:ITSMAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="OracleOPMN" />
         </xs:extension>
       </xs:complexContent>
@@ -6163,7 +6163,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:DevelopmentToolsAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="OracleForms" />
         </xs:extension>
       </xs:complexContent>
@@ -6177,7 +6177,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AdministrationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="SophosAntiVirus" />
         </xs:extension>
       </xs:complexContent>
@@ -6190,7 +6190,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AdministrationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="McAfeeCommonManagementAgent" />
         </xs:extension>
       </xs:complexContent>
@@ -6203,7 +6203,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AdministrationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="McAfeeVirusScan" />
         </xs:extension>
       </xs:complexContent>
@@ -6216,7 +6216,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AdministrationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="BMCPatrolAgent" />
         </xs:extension>
       </xs:complexContent>
@@ -6229,7 +6229,7 @@
     <xs:complexType>
       <xs:complexContent>
         <xs:extension base="aae:AdministrationAttributes">
-          <xs:attribute use="required" name="SoftwareSubClass" 
+          <xs:attribute use="required" name="SoftwareSubClass"
 			type="aae:SoftwareSubClass" fixed="BMCPerformanceManager" />
         </xs:extension>
       </xs:complexContent>
@@ -6304,7 +6304,7 @@
       für die grundlegende Funktionalität verantwortlich ist
       </xs:documentation>
       <xs:documentation xml:lang="en">Central resource, which
-      is responsible for the core funktionality of the system.
+      is responsible for the core functionality of the system.
       </xs:documentation>
     </xs:annotation>
     <xs:complexType>
@@ -6358,7 +6358,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Environment" />
         </xs:extension>
-      </xs:complexContent>		
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6488,7 +6488,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Monitoring" />
         </xs:extension>
-      </xs:complexContent>	
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6507,7 +6507,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="PhysicalObject" />
         </xs:extension>
-      </xs:complexContent>	
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6526,7 +6526,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Place" />
         </xs:extension>
-      </xs:complexContent>			
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6547,7 +6547,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Process" />
         </xs:extension>
-      </xs:complexContent>			
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6568,7 +6568,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Provider" />
         </xs:extension>
-      </xs:complexContent>					
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6592,7 +6592,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Security" />
         </xs:extension>
-      </xs:complexContent>				
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6611,7 +6611,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Service" />
         </xs:extension>
-      </xs:complexContent>						
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 
@@ -6630,7 +6630,7 @@
           <xs:attribute use="required" name="ResourceClass" type="aae:ResourceClass"
                         fixed="Storage" />
         </xs:extension>
-      </xs:complexContent>							
+      </xs:complexContent>
     </xs:complexType>
   </xs:element>
 

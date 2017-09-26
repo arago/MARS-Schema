@@ -3,7 +3,7 @@
            targetNamespace="https://graphit.co/schemas/v2/MARSSchema" 
            xmlns:aae="https://graphit.co/schemas/v2/MARSSchema"
            elementFormDefault="qualified"
-           version="5.3.6" >
+           version="5.3.7" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 
@@ -370,6 +370,7 @@
       <xs:enumeration value="AntiSpam" />
       <xs:enumeration value="ApplicationServer" />
       <xs:enumeration value="Automation" />
+      <xs:enumeration value="Backup" />
       <xs:enumeration value="BusinessIntelligence" />
       <xs:enumeration value="CMS" />
       <xs:enumeration value="Communication" />
@@ -494,6 +495,7 @@
       <xs:enumeration value="ElastiCache" />
       <xs:enumeration value="Elasticsearch" />
       <xs:enumeration value="elgg" />
+      <xs:enumeration value="EMCNetWorker" />
       <xs:enumeration value="Empress" />
       <xs:enumeration value="Entertainment" />
       <xs:enumeration value="EnterpriseIQ" />
@@ -641,6 +643,7 @@
       <xs:enumeration value="Postfix" />
       <xs:enumeration value="PostgreSQL" />
       <xs:enumeration value="PowerVM" />
+      <xs:enumeration value="ProArc" />
       <xs:enumeration value="ProntoXI" />
       <xs:enumeration value="Proxmox" />
       <xs:enumeration value="Proteus" />
@@ -1963,6 +1966,23 @@
           <xs:annotation>
             <xs:documentation xml:lang="en">Tools to manage an IT
             environment
+            </xs:documentation>
+            <xs:documentation xml:lang="de">Werkzeuge zur
+            Verwaltung einer IT-Umgebung
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="BackupAttributes">
+    <xs:complexContent>
+      <xs:extension base="aae:SoftwareAttributes">
+        <xs:attribute use="required" name="SoftwareClass" type="aae:SoftwareClass"
+                      fixed="Backup">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Tools for backup, restore, archive, and all that
             </xs:documentation>
             <xs:documentation xml:lang="de">Werkzeuge zur
             Verwaltung einer IT-Umgebung
@@ -3551,6 +3571,19 @@
       </xs:complexContent>
     </xs:complexType>
   </xs:element>
+  <xs:element name="EMCNetWorker">
+    <xs:annotation>
+      <xs:documentation>EMC NetWorker (formerly Legato NetWorker) is a suite of enterprise level data protection software that unifies and automates backup to tape, disk-based, and flash-based storage media across physical and virtual environments for granular and disaster recovery.</xs:documentation>
+    </xs:annotation>
+     <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:BackupAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="EMCNetWorker" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ESB">
     <xs:complexType>
       <xs:complexContent>
@@ -4137,6 +4170,19 @@
         <xs:extension base="aae:CMSAttributes">
           <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
                         fixed="Joomla" />
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProArc">
+    <xs:annotation>
+      <xs:documentation>ProArc is a Document management system. roArc is mostly used for technical documentation, and is used by many players in the oil and gas sector and construction industry.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="aae:CMSAttributes">
+          <xs:attribute use="required" name="SoftwareSubClass" type="aae:SoftwareSubClass"
+                        fixed="ProArc" />
         </xs:extension>
       </xs:complexContent>
     </xs:complexType>

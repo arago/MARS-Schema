@@ -3,7 +3,7 @@
            targetNamespace="https://graphit.co/schemas/v2/MARSSchema"
            xmlns:aae="https://graphit.co/schemas/v2/MARSSchema"
            elementFormDefault="qualified"
-           version="5.3.7" >
+           version="5.3.8" >
 
   <!-- Attribute Definition for reused Attributes in all Node Levels -->
 

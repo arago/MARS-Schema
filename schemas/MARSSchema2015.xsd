@@ -6347,8 +6347,8 @@
       solchen, welche die notwendigen Rahmenparameter für den Betrieb
       bietet.
       </xs:documentation>
-      <xs:documentation xml:lang="en">Enviroment, or at least a
-      part of it, which sets the needed parametrs for the operation of the
+      <xs:documentation xml:lang="en">Environment, or at least a
+      part of it, which sets the needed parameters for the operation of the
       Application.
       </xs:documentation>
     </xs:annotation>

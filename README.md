@@ -1,6 +1,10 @@
 MARS-Schema
 ===========
 
+# Status
+
+With HIRO 6.0 this schema is obsolete. It is currently declared as deprecated.
+
 # What is MARS?
 
 MARS is a lean and simple modeling “language” created for describing IT environments and components and their relations. Unlike a CMDB, which was created to support manual processes and to provide human readable information (and therefore is very hard to setup and maintain), MARS was created with automated operations and visualization in mind. It contains just enough information to minimize the maintenance efforts.

@@ -4,6 +4,7 @@ MARS-Schema
 # Status
 
 With HIRO 6.0 this schema is obsolete. It is currently declared as deprecated.
+*Please see https://github.com/arago/OGIT/tree/master/NTO/MARS for the replacement.*
 
 # What is MARS?
 
